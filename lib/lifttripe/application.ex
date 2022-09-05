@@ -9,7 +9,7 @@ defmodule Lifttripe.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Lifttripe.Repo,
+      # Lifttripe.Repo,
       # Start the Telemetry supervisor
       LifttripeWeb.Telemetry,
       # Start the PubSub system
