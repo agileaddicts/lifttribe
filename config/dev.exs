@@ -13,8 +13,7 @@ config :lifttripe, Lifttripe.Repo,
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
-# watchers to your application. For example, we use it
-# with esbuild to bundle .js and .css sources.
+# watchers to your application.
 config :lifttripe, LifttripeWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
@@ -24,8 +23,7 @@ config :lifttripe, LifttripeWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "7dcFKYQ2WvCNkN55jXjiM6tHhs1vdCsVpez49DATgUp2EUX7MVVUZUn7h5EarOrI",
   watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    yarn: ["run", "watch", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # ## SSL Support
