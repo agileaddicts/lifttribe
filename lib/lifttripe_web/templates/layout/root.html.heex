@@ -9,10 +9,18 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
-  <body>
-    <header>
-      
+  <body class="antialiased text-gray-800">
+    <header class="border-b-2 border-black bg-midnight">
+      <div class="container px-12 py-8 mx-auto">
+        <img src={Routes.static_path(@conn, "/images/logo_small.png")} />
+      </div>
     </header>
-    <%= @inner_content %>
+    <main class="bg-white">
+      <div class="container px-12 py-8 mx-auto">
+        <%= @inner_content %>
+      </div>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>
