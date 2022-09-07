@@ -9,18 +9,21 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
-  <body class="antialiased text-gray-800">
-    <header class="border-b-2 border-black bg-midnight">
+  <body>
+    <header class="border-b-2 border-black bg-midnight text-slate-50">
       <div class="container px-12 py-8 mx-auto">
         <img src={Routes.static_path(@conn, "/images/logo_small.png")} />
       </div>
     </header>
-    <main class="bg-white">
+    <main class="bg-slate-50 text-midnight">
       <div class="container px-12 py-8 mx-auto">
         <%= @inner_content %>
       </div>
     </main>
-    <footer>
+    <footer class="border-t-2 border-black text-slate-50 bg-midnight">
+      <div class="container px-12 py-4 mx-auto">
+        <p><span class="text-orange">Lift Tribe</span> © 2022 Sebastian Göttschkes</p>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,17 +1,31 @@
-<form phx-submit="save">
-  <label>Squat 1RM (in kg):</label>
-  <input name="squat" value={@numbers.squat.max}/>
-  <label>Bench 1RM (in kg):</label>
-  <input name="bench" value={@numbers.bench.max}/>
-  <label>Deadlift 1RM (in kg):</label>
-  <input name="deadlift" value={@numbers.deadlift.max}/>
-  <label>Overhead Press 1RM (in kg):</label>
-  <input name="ohp" value={@numbers.ohp.max}/>
-  <input type="submit" value="Save" />
+<form class="" phx-submit="save">
+  <div class="grid w-2/3 grid-cols-2 gap-2">
+
+    <label class="">
+      Squat 1RM (in kg):
+    </label>
+    <input type="text" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="squat" value={@numbers.squat.max}/>
+    
+    <label class="block">
+      Bench 1RM (in kg):
+    </label>
+    <input type="text" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-5" name="bench" value={@numbers.bench.max}/>
+    
+    <label class="block">
+      Deadlift 1RM (in kg):
+    </label>
+    <input type="text" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-5" name="deadlift" value={@numbers.deadlift.max}/>
+    
+    <label class="block">
+      Overhead Press 1RM (in kg):
+    </label>
+    <input type="text" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-5" name="ohp" value={@numbers.ohp.max}/>
+    
+    <input class="block p-2 mt-2 border-2 border-midnight" type="submit" value="Save" />
+  </div>
 </form>
 
-
-<table>
+<table class="w-full mt-8">
   <tr>
     <th>Exercise</th>
     <th>1 Rep Maximum</th>
