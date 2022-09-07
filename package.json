@@ -1,6 +1,7 @@
 {
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
     "phoenix": "./deps/phoenix",
     "phoenix_html": "./deps/phoenix_html",
     "phoenix_live_view": "./deps/phoenix_live_view"
