@@ -1,0 +1,19 @@
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - directory: "/"
+    package-ecosystem: "npm"
+    schedule:
+      day: "monday"
+      interval: "weekly"
+      time: "08:00"
+      timezone: "ETC/UTC"
+  - directory: "/"
+    package-ecosystem: "mix"
+    schedule:
+      day: "monday"
+      interval: "weekly"
+      time: "08:00"
+      timezone: "ETC/UTC"
