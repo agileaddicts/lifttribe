@@ -9,11 +9,11 @@ updates:
       day: "monday"
       interval: "weekly"
       time: "08:00"
-      timezone: "ETC/UTC"
+      timezone: "Etc/UTC"
   - directory: "/"
     package-ecosystem: "mix"
     schedule:
       day: "monday"
       interval: "weekly"
       time: "08:00"
-      timezone: "ETC/UTC"
+      timezone: "Etc/UTC"
