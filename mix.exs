@@ -63,7 +63,7 @@ defmodule Lifttripe.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["yarn build", "phx.digest"]
+      "assets.deploy": ["cmd yarn build", "phx.digest"]
     ]
   end
 end

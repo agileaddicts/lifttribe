@@ -8,11 +8,11 @@ import Config
 # The block below contains prod specific runtime configuration.
 if config_env() == :prod do
   database_url =
-    System.get_env("DATABASE_URL") ||
-      raise """
-      environment variable DATABASE_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
+    System.get_env("DATABASE_URL") # ||
+    #   raise """
+    #   environment variable DATABASE_URL is missing.
+    #   For example: ecto://USER:PASS@HOST/DATABASE
+    #   """
 
   config :lifttripe, Lifttripe.Repo,
     # ssl: true,
@@ -48,7 +48,7 @@ if config_env() == :prod do
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-  #     config :lifttripe, LifttripeWeb.Endpoint, server: true
+  config :lifttripe, LifttripeWeb.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
