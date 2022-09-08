@@ -1,11 +1,11 @@
-defmodule LifttripeWeb.Router do
-  use LifttripeWeb, :router
+defmodule LifttribeWeb.Router do
+  use LifttribeWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {LifttripeWeb.LayoutView, :root}
+    plug :put_root_layout, {LifttribeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -18,14 +18,14 @@ defmodule LifttripeWeb.Router do
     plug :auth
   end
 
-  scope "/", LifttripeWeb do
+  scope "/", LifttribeWeb do
     pipe_through [:browser, :basic_auth]
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", LifttripeWeb do
+  # scope "/api", LifttribeWeb do
   #   pipe_through :api
   # end
 
@@ -41,7 +41,7 @@ defmodule LifttripeWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: LifttripeWeb.Telemetry
+      live_dashboard "/dashboard", metrics: LifttribeWeb.Telemetry
     end
   end
 
@@ -58,10 +58,10 @@ defmodule LifttripeWeb.Router do
   end
 
   defp auth(conn, opts) do
-    case Application.fetch_env!(:lifttripe, :basic_auth_username) do
+    case Application.fetch_env!(:lifttribe, :basic_auth_username) do
       nil -> conn
       username ->
-        password = Application.fetch_env!(:lifttripe, :basic_auth_password)
+        password = Application.fetch_env!(:lifttribe, :basic_auth_password)
         Plug.BasicAuth.basic_auth(conn, username: username, password: password)
     end
   end

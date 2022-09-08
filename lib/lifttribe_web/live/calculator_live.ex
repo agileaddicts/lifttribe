@@ -1,5 +1,5 @@
-defmodule LifttripeWeb.CalculatorLive do
-  use LifttripeWeb, :live_view
+defmodule LifttribeWeb.CalculatorLive do
+  use LifttribeWeb, :live_view
 
   def mount(_params, _session, socket) do
     {:ok,

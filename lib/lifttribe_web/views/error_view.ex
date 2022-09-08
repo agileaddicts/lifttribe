@@ -1,5 +1,5 @@
-defmodule LifttripeWeb.ErrorView do
-  use LifttripeWeb, :view
+defmodule LifttribeWeb.ErrorView do
+  use LifttribeWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

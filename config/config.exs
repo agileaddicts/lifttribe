@@ -7,16 +7,16 @@
 # General application configuration
 import Config
 
-config :lifttripe,
-  ecto_repos: [Lifttripe.Repo],
+config :lifttribe,
+  ecto_repos: [Lifttribe.Repo],
   basic_auth_username: nil,
   basic_auth_password: nil
 
 # Configures the endpoint
-config :lifttripe, LifttripeWeb.Endpoint,
+config :lifttribe, LifttribeWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: LifttripeWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Lifttripe.PubSub,
+  render_errors: [view: LifttribeWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Lifttribe.PubSub,
   live_view: [signing_salt: "4/B5l4ve"]
 
 # Configures the mailer
@@ -26,7 +26,7 @@ config :lifttripe, LifttripeWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :lifttripe, Lifttripe.Mailer, adapter: Swoosh.Adapters.Local
+config :lifttribe, Lifttribe.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

@@ -1,4 +1,4 @@
-# agileaddicts/lifttripe
+# agileaddicts/lifttribe
 
 ## Environments
 

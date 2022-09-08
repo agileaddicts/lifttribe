@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Lifttripe.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Lifttribe.Repo, :manual)

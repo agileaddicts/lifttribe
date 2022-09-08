@@ -1,5 +1,5 @@
-defmodule Lifttripe.Repo do
+defmodule Lifttribe.Repo do
   use Ecto.Repo,
-    otp_app: :lifttripe,
+    otp_app: :lifttribe,
     adapter: Ecto.Adapters.Postgres
 end

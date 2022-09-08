@@ -1,3 +1,3 @@
-defmodule LifttripeWeb.PageViewTest do
-  use LifttripeWeb.ConnCase, async: true
+defmodule LifttribeWeb.PageViewTest do
+  use LifttribeWeb.ConnCase, async: true
 end

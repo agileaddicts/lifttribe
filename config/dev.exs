@@ -1,10 +1,10 @@
 import Config
 
 # Configure your database
-config :lifttripe, Lifttripe.Repo,
+config :lifttribe, Lifttribe.Repo,
   username: "postgres",
   password: "postgres",
-  database: "lifttripe_dev",
+  database: "lifttribe_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -14,7 +14,7 @@ config :lifttripe, Lifttripe.Repo,
 #
 # The watchers configuration can be used to run external
 # watchers to your application.
-config :lifttripe, LifttripeWeb.Endpoint,
+config :lifttribe, LifttribeWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -51,13 +51,13 @@ config :lifttripe, LifttripeWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :lifttripe, LifttripeWeb.Endpoint,
+config :lifttribe, LifttribeWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/lifttripe_web/(live|views)/.*(ex)$",
-      ~r"lib/lifttripe_web/templates/.*(eex)$"
+      ~r"lib/lifttribe_web/(live|views)/.*(ex)$",
+      ~r"lib/lifttribe_web/templates/.*(eex)$"
     ]
   ]
 

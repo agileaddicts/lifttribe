@@ -1,4 +1,4 @@
-defmodule LifttripeWeb.Telemetry do
+defmodule LifttribeWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -31,23 +31,23 @@ defmodule LifttripeWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("lifttripe.repo.query.total_time",
+      summary("lifttribe.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("lifttripe.repo.query.decode_time",
+      summary("lifttribe.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("lifttripe.repo.query.query_time",
+      summary("lifttribe.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("lifttripe.repo.query.queue_time",
+      summary("lifttribe.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("lifttripe.repo.query.idle_time",
+      summary("lifttribe.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -65,7 +65,7 @@ defmodule LifttripeWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {LifttripeWeb, :count_users, []}
+      # {LifttribeWeb, :count_users, []}
     ]
   end
 end

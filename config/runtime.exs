@@ -4,7 +4,7 @@ if config_env() == :prod do
   basic_auth_username = System.get_env("BASIC_AUTH_USERNAME") || nil
   basic_auth_password = System.get_env("BASIC_AUTH_PASSWORD") || nil
 
-  config :lifttripe,
+  config :lifttribe,
     basic_auth_username: basic_auth_username,
     basic_auth_password: basic_auth_password
 
@@ -15,7 +15,7 @@ if config_env() == :prod do
   #   """
   pool_size = String.to_integer(System.get_env("POOL_SIZE") || "10")
 
-  config :lifttripe, Lifttripe.Repo,
+  config :lifttribe, Lifttribe.Repo,
     # ssl: true,
     # socket_options: [:inet6],
     url: database_url,
@@ -32,7 +32,7 @@ if config_env() == :prod do
 
   url_host = System.get_env("PHX_HOST")
 
-  config :lifttripe, LifttripeWeb.Endpoint,
+  config :lifttribe, LifttribeWeb.Endpoint,
     http: [port: http_port],
     secret_key_base: secret_key_base,
     url: [host: url_host, port: http_port]
@@ -43,7 +43,7 @@ if config_env() == :prod do
   # Also, you may need to configure the Swoosh API client of your choice if you
   # are not using SMTP. Here is an example of the configuration:
   #
-  #     config :lifttripe, Lifttripe.Mailer,
+  #     config :lifttribe, Lifttribe.Mailer,
   #       adapter: Swoosh.Adapters.Mailgun,
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")

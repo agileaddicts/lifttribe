@@ -1,12 +1,12 @@
-defmodule LifttripeWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :lifttripe
+defmodule LifttribeWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :lifttribe
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_lifttripe_key",
+    key: "_lifttribe_key",
     signing_salt: "T7u/4VZ1"
   ]
 
@@ -18,7 +18,7 @@ defmodule LifttripeWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :lifttripe,
+    from: :lifttribe,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
@@ -28,7 +28,7 @@ defmodule LifttripeWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :lifttripe
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :lifttribe
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -46,5 +46,5 @@ defmodule LifttripeWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug LifttripeWeb.Router
+  plug LifttribeWeb.Router
 end

@@ -1,1 +1,1 @@
-call "%~dp0\lifttripe" eval Lifttripe.Release.migrate
+call "%~dp0\lifttribe" eval Lifttribe.Release.migrate

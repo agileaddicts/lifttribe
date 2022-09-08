@@ -1,5 +1,5 @@
-defmodule LifttripeWeb.PageControllerTest do
-  use LifttripeWeb.ConnCase
+defmodule LifttribeWeb.PageControllerTest do
+  use LifttribeWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

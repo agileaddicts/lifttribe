@@ -1,12 +1,12 @@
-defmodule LifttripeWeb do
+defmodule LifttribeWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use LifttripeWeb, :controller
-      use LifttripeWeb, :view
+      use LifttribeWeb, :controller
+      use LifttribeWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,19 +19,19 @@ defmodule LifttripeWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: LifttripeWeb
+      use Phoenix.Controller, namespace: LifttribeWeb
 
       import Plug.Conn
-      import LifttripeWeb.Gettext
-      alias LifttripeWeb.Router.Helpers, as: Routes
+      import LifttribeWeb.Gettext
+      alias LifttribeWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/lifttripe_web/templates",
-        namespace: LifttripeWeb
+        root: "lib/lifttribe_web/templates",
+        namespace: LifttribeWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -45,7 +45,7 @@ defmodule LifttripeWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {LifttripeWeb.LayoutView, "live.html"}
+        layout: {LifttribeWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -72,7 +72,7 @@ defmodule LifttripeWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import LifttripeWeb.Gettext
+      import LifttribeWeb.Gettext
     end
   end
 
@@ -87,9 +87,9 @@ defmodule LifttripeWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import LifttripeWeb.ErrorHelpers
-      import LifttripeWeb.Gettext
-      alias LifttripeWeb.Router.Helpers, as: Routes
+      import LifttribeWeb.ErrorHelpers
+      import LifttribeWeb.Gettext
+      alias LifttribeWeb.Router.Helpers, as: Routes
     end
   end
 

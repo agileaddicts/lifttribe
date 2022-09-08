@@ -1,6 +1,6 @@
-defmodule Lifttripe do
+defmodule Lifttribe do
   @moduledoc """
-  Lifttripe keeps the contexts that define your domain
+  Lifttribe keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

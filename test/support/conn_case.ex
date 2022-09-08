@@ -1,4 +1,4 @@
-defmodule LifttripeWeb.ConnCase do
+defmodule LifttribeWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule LifttripeWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use LifttripeWeb.ConnCase, async: true`, although
+  by setting `use LifttribeWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule LifttripeWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import LifttripeWeb.ConnCase
+      import LifttribeWeb.ConnCase
 
-      alias LifttripeWeb.Router.Helpers, as: Routes
+      alias LifttribeWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint LifttripeWeb.Endpoint
+      @endpoint LifttribeWeb.Endpoint
     end
   end
 
   setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Lifttripe.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Lifttribe.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

@@ -1,9 +1,9 @@
-defmodule Lifttripe.Release do
+defmodule Lifttribe.Release do
   @moduledoc """
   Used for executing DB release tasks when run in production without Mix
   installed.
   """
-  @app :lifttripe
+  @app :lifttribe
 
   def migrate do
     load_app()
