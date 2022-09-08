@@ -1,7 +1,13 @@
 import Config
 
 if config_env() == :prod do
-  # ||
+  basic_auth_username = System.get_env("BASIC_AUTH_USERNAME") || nil
+  basic_auth_password = System.get_env("BASIC_AUTH_PASSWORD") || nil
+
+  config :lifttripe,
+    basic_auth_username: basic_auth_username,
+    basic_auth_password: basic_auth_password
+
   database_url = System.get_env("DATABASE_URL")
   #   raise """
   #   environment variable DATABASE_URL is missing.

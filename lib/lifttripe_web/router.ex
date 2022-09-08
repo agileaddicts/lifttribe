@@ -14,8 +14,12 @@ defmodule LifttripeWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :basic_auth do
+    plug :auth
+  end
+
   scope "/", LifttripeWeb do
-    pipe_through :browser
+    pipe_through [:browser, :basic_auth]
 
     get "/", PageController, :index
   end
@@ -50,6 +54,15 @@ defmodule LifttripeWeb.Router do
       pipe_through :browser
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+  end
+
+  defp auth(conn, opts) do
+    case Application.fetch_env!(:lifttripe, :basic_auth_username) do
+      nil -> conn
+      username ->
+        password = Application.fetch_env!(:lifttripe, :basic_auth_password)
+        Plug.BasicAuth.basic_auth(conn, username: username, password: password)
     end
   end
 end

@@ -8,7 +8,9 @@
 import Config
 
 config :lifttripe,
-  ecto_repos: [Lifttripe.Repo]
+  ecto_repos: [Lifttripe.Repo],
+  basic_auth_username: nil,
+  basic_auth_password: nil
 
 # Configures the endpoint
 config :lifttripe, LifttripeWeb.Endpoint,
