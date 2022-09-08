@@ -1,10 +1,38 @@
 <form class="" phx-submit="save">
-  <div class="grid w-2/3 grid-cols-2 gap-2">
+  <div class="grid grid-cols-4 gap-2">
 
     <label class="">
       Squat 1RM (in kg):
     </label>
     <input type="text" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="squat" value={@numbers.squat.max}/>
+
+    <table class="col-span-2 row-span-5">
+      <tr>
+        <th>Exercise</th>
+        <th>1 Rep Maximum</th>
+        <th>Training Maximum</th>
+      </tr>
+      <tr>
+        <td>Squat:</td>
+        <td><%= @numbers.squat.max %></td>
+        <td><%= @numbers.squat.tm %></td>
+      </tr>
+      <tr>
+        <td>Bench:</td>
+        <td><%= @numbers.bench.max %></td>
+        <td><%= @numbers.bench.tm %></td>
+      </tr>
+      <tr>
+        <td>Deadlift:</td>
+        <td><%= @numbers.deadlift.max %></td>
+        <td><%= @numbers.deadlift.tm %></td>
+      </tr>
+      <tr>
+        <td>Overhead Press:</td>
+        <td><%= @numbers.ohp.max %></td>
+        <td><%= @numbers.ohp.tm %></td>
+      </tr>
+    </table>
     
     <label class="block">
       Bench 1RM (in kg):
