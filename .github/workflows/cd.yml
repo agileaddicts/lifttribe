@@ -8,10 +8,18 @@ env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
   deploy-staging:
-    name: Deploy app
+    name: Deploy app to staging
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only --config ./fly.staging.toml
+  deploy-production:
+    name: Deploy app to production
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only --config ./fly.production.toml
