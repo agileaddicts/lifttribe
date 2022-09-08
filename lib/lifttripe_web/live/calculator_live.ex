@@ -1,7 +1,7 @@
 defmodule LifttripeWeb.CalculatorLive do
   use LifttripeWeb, :live_view
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     {:ok,
      assign(socket,
        numbers: %{

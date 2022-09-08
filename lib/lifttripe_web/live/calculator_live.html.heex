@@ -53,53 +53,30 @@
   </div>
 </form>
 
-<table class="w-full mt-8">
-  <tr>
-    <th>Exercise</th>
-    <th>1 Rep Maximum</th>
-    <th>Training Maximum</th>
-  </tr>
-  <tr>
-    <td>Squat:</td>
-    <td><%= @numbers.squat.max %></td>
-    <td><%= @numbers.squat.tm %></td>
-  </tr>
-  <tr>
-    <td>Bench:</td>
-    <td><%= @numbers.bench.max %></td>
-    <td><%= @numbers.bench.tm %></td>
-  </tr>
-  <tr>
-    <td>Deadlift:</td>
-    <td><%= @numbers.deadlift.max %></td>
-    <td><%= @numbers.deadlift.tm %></td>
-  </tr>
-  <tr>
-    <td>Overhead Press:</td>
-    <td><%= @numbers.ohp.max %></td>
-    <td><%= @numbers.ohp.tm %></td>
-  </tr>
-</table>
+<h2 class="mt-8 text-2xl f-full text-orange"><%= @plan.name %></h2>
 
-<h2><%= @plan.name %></h2>
-
-<table>
+<table class="w-full mt-4">
   <%= for week <- @plan.weeks do %>
     <tr>  
-      <th colspan="4"><%= week.name %></th>
+      <th colspan="8">
+        <%= week.name %>
+      </th>
     </tr>
     <tr>
       <%= for day <- week.days do %>
-        <th>
-          <%= day.name %><br/>
-          <%= day.exercise %></th>
+        <th class="border-r-2 border-slate-600" colspan="2">
+          <%= day.name %><br>
+          <%= day.exercise %>
+        </th>
       <% end %>
     </tr>
     <%= for s <- 0..5 do %>
       <tr>
-        <%= for d <- 0..length(week.days) do %>
+        <%= for d <- 0..(length(week.days)-1) do %>
           <td>
-            <%= get_set_name(week, d, s) %><br/>
+            <span class="px-2 text-xs"><%= get_set_name(week, d, s) %></span>
+          </td>
+          <td class="px-2 border-r-2 border-slate-600">
             <%= get_set_weight_and_reps(week, d, s) %>
           </td>
         <% end %>
