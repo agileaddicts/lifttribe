@@ -10,8 +10,14 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :lifttripe, LifttripeWeb.Endpoint,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: :conn,
+  force_ssl: [rewrite_on: [:x_forwarded_host, :x_forwarded_port, :x_forwarded_proto]],
+  http: [
+    ip: {0, 0, 0, 0, 0, 0, 0, 0}
+  ],
+  server: true,
+  url: [host: "example.com", port: 80]
 
 # Do not print debug messages in production
 config :logger, level: :info
