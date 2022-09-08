@@ -1,4 +1,4 @@
-app = "lifttribe"
+app = "lifttribe-staging"
 kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
