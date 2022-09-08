@@ -1,15 +1,13 @@
-# fly.toml file generated for lifttripe on 2022-09-07T17:40:12+02:00
-
-app = "lifttripe"
+app = "lifttribe"
 kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
 
 # [deploy]
-#  release_command = "/app/bin/server"
+#  release_command = "/app/bin/migrate"
 
 [env]
-  PHX_HOST = "lifttripe.fly.dev"
+  PHX_HOST = "lifttribe.dev"
   PORT = "8080"
 
 [experimental]
