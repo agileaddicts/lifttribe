@@ -22,6 +22,7 @@ defmodule LifttribeWeb.Router do
     pipe_through [:browser, :basic_auth]
 
     get "/", PageController, :index
+    get "/531", PageController, :five_three_one
   end
 
   # Other scopes may use custom stacks.
