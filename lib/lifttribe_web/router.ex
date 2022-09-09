@@ -23,6 +23,7 @@ defmodule LifttribeWeb.Router do
 
     get "/", PageController, :index
     get "/531", PageController, :five_three_one
+    get "/love", PageController, :love
   end
 
   # Other scopes may use custom stacks.

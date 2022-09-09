@@ -12,7 +12,9 @@
   <body>
     <header class="border-b-2 border-black bg-midnight text-slate-50">
       <div class="container px-12 py-8 mx-auto">
-        <img src={Routes.static_path(@conn, "/images/logo_small.png")} />
+        <a href="/">
+          <img src={Routes.static_path(@conn, "/images/logo_small.png")} />
+        </a>
       </div>
     </header>
     <main class="bg-slate-50 text-midnight">
@@ -22,7 +24,7 @@
     </main>
     <footer class="border-t-2 border-black text-slate-50 bg-midnight">
       <div class="container px-12 py-4 mx-auto">
-        <p><a class="text-orange" href="/">Lift Tribe</a> was made with <i class="fa-solid fa-heart"></i> and <a class="text-orange" href="https://www.club-mate.de/en/" target="_blank">Club Mate</a> in Vienna.</p>
+        <p><a class="text-orange" href="/">Lift Tribe</a> was made with <a href="/love"><i class="fa-solid fa-heart"></i></a> and <a class="text-orange" href="https://www.club-mate.de/en/" target="_blank">Club Mate</a> in Vienna.</p>
       </div>
     </footer>
   </body>
