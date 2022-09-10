@@ -61,7 +61,9 @@ defmodule LifttribeWeb.Router do
 
   defp auth(conn, _opts) do
     case Application.get_env(:lifttribe, :basic_auth_username) do
-      nil -> conn
+      nil ->
+        conn
+
       username ->
         password = Application.fetch_env!(:lifttribe, :basic_auth_password)
         Plug.BasicAuth.basic_auth(conn, username: username, password: password)
