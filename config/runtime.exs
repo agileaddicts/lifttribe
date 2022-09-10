@@ -9,10 +9,12 @@ if config_env() == :prod do
     basic_auth_password: basic_auth_password
 
   database_url = System.get_env("DATABASE_URL")
-  #   raise """
-  #   environment variable DATABASE_URL is missing.
-  #   For example: ecto://USER:PASS@HOST/DATABASE
-  #   """
+
+  raise """
+  environment variable DATABASE_URL is missing.
+  For example: ecto://USER:PASS@HOST/DATABASE
+  """
+
   pool_size = String.to_integer(System.get_env("POOL_SIZE") || "10")
 
   config :lifttribe, Lifttribe.Repo,
