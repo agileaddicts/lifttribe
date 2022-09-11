@@ -11,6 +11,17 @@ defmodule Lifttribe.Factory do
     }
   end
 
+  def build(:set) do
+    %Lifttribe.Set{
+      uuid: Ecto.UUID.generate(),
+      workout: build(:workout),
+      order_index: 0,
+      exercise: Faker.Lorem.word(),
+      weight: 50.0,
+      reps: 5
+    }
+  end
+
   def build(:workout) do
     %Lifttribe.Workout{
       uuid: Ecto.UUID.generate(),
