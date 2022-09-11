@@ -13,13 +13,13 @@ if config_env() == :prod do
       raise """
       environment variable DATABASE_URL is missing.
       """
+  ecto_ipv6? = System.get_env("ECTO_IPV6") == "true"
 
   pool_size = String.to_integer(System.get_env("POOL_SIZE") || "10")
 
   config :lifttribe, Lifttribe.Repo,
-    # ssl: true,
-    # socket_options: [:inet6],
     url: database_url,
+    socket_options: if(ecto_ipv6?, do: [:inet6], else: []),
     pool_size: pool_size
 
   http_port = String.to_integer(System.get_env("PORT") || "4000")
