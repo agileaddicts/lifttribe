@@ -1,4 +1,4 @@
-<h1>5/3/1 Calculator</h1>
+<h1 class="pb-8 font-serif text-4xl text-center text-orange">5/3/1 Calculator</h1>
 <form class="" phx-submit="save">
   <div class="grid grid-cols-4 gap-2">
 
@@ -54,7 +54,7 @@
   </div>
 </form>
 
-<h2 class="mt-8 text-2xl f-full text-orange"><%= @plan.name %></h2>
+<h2 class="pt-8 font-serif text-2xl f-full text-orange"><%= @plan.name %></h2>
 
 <table class="w-full mt-4">
   <%= for week <- @plan.weeks do %>
