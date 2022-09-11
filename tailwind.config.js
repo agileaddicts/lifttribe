@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: ["./assets/js/**/*.js", "./lib/*_web.ex", "./lib/*_web/**/*.*ex"],
@@ -14,6 +15,12 @@ module.exports = {
       // custom colors
       midnight: '#23252e',
       orange: '#ff9045'
+    },
+    extend: {
+      fontFamily: {
+        'sans': ['Vollkorn', ...defaultTheme.fontFamily.sans],
+        'serif': ['Raleway', ...defaultTheme.fontFamily.serif],
+      },
     }
   },
   plugins: [

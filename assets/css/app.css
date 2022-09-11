@@ -1,3 +1,15 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Vollkorn";
+  src: url('../fonts/vollkorn.ttf'), 
+  url('../fonts/vollkorn_italic.ttf');
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url('../fonts/raleway.ttf'), 
+  url('../fonts/raleway.ttf');
+}
