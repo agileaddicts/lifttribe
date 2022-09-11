@@ -14,8 +14,7 @@ defmodule Lifttribe.WorkoutTest do
       assert workout.id
       assert workout.uuid
 
-      workout_from_db =
-        Lifttribe.Repo.get_by(Workout, athlete_id: workout.athlete.id, date: workout.date)
+      workout_from_db = Lifttribe.Repo.get(Workout, workout.id)
 
       assert workout_from_db
     end
@@ -23,13 +22,12 @@ defmodule Lifttribe.WorkoutTest do
     test "correct insert with same athlete and different date" do
       workout = insert!(:workout)
 
-      {:ok, workout} = Workout.create(workout.athlete, Date.add(Date.utc_today(), -1))
+      {:ok, second_workout} = Workout.create(workout.athlete, Date.add(Date.utc_today(), -1))
 
-      assert workout.id
-      assert workout.uuid
+      assert second_workout.id
+      assert second_workout.uuid
 
-      workout_from_db =
-        Lifttribe.Repo.get_by(Workout, athlete_id: workout.athlete.id, date: workout.date)
+      workout_from_db = Lifttribe.Repo.get(Workout, second_workout.id)
 
       assert workout_from_db
     end
@@ -43,11 +41,7 @@ defmodule Lifttribe.WorkoutTest do
       assert second_workout.id
       assert second_workout.uuid
 
-      workout_from_db =
-        Lifttribe.Repo.get_by(Workout,
-          athlete_id: second_workout.athlete.id,
-          date: second_workout.date
-        )
+      workout_from_db = Lifttribe.Repo.get(Workout, second_workout.id)
 
       assert workout_from_db
     end

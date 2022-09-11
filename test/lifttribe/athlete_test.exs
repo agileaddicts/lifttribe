@@ -12,7 +12,7 @@ defmodule Lifttribe.AthleteTest do
       assert athlete.id
       assert athlete.uuid
 
-      athlete_from_db = Lifttribe.Repo.get_by(Athlete, username: "test")
+      athlete_from_db = Lifttribe.Repo.get(Athlete, athlete.id)
       assert athlete_from_db
     end
 
