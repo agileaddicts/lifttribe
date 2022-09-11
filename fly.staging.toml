@@ -3,8 +3,8 @@ kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
 
-# [deploy]
-#  release_command = "/app/bin/migrate"
+[deploy]
+  release_command = "/app/bin/migrate"
 
 [env]
   PHX_HOST = "lifttribe.dev"
