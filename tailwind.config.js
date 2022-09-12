@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'sans': ['Vollkorn', ...defaultTheme.fontFamily.sans],
+        'sans': ['Roboto\\ Slab', ...defaultTheme.fontFamily.sans],
         'serif': ['Raleway', ...defaultTheme.fontFamily.serif],
       },
     }

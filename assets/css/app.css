@@ -3,9 +3,8 @@
 @import "tailwindcss/utilities";
 
 @font-face {
-  font-family: "Vollkorn";
-  src: url('../fonts/vollkorn.ttf'), 
-  url('../fonts/vollkorn_italic.ttf');
+  font-family: "Roboto Slab";
+  src: url('../fonts/roboto_slab.ttf');
 }
 
 @font-face {
