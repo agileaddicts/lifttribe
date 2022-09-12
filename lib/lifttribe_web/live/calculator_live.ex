@@ -46,22 +46,47 @@ defmodule LifttribeWeb.CalculatorLive do
             %{
               name: "Day 1",
               exercise: "Squat",
-              sets: generate_sets(numbers.squat.tm)
+              sets: generate_sets(numbers.squat.tm, 1)
             },
             %{
               name: "Day 2",
               exercise: "Bench",
-              sets: generate_sets(numbers.bench.tm)
+              sets: generate_sets(numbers.bench.tm, 1)
             },
             %{
               name: "Day 3",
               exercise: "Deadlift",
-              sets: generate_sets(numbers.deadlift.tm)
+              sets: generate_sets(numbers.deadlift.tm, 1)
             },
             %{
               name: "Day 4",
               exercise: "Overhead Press",
-              sets: generate_sets(numbers.ohp.tm)
+              sets: generate_sets(numbers.ohp.tm, 1)
+            }
+          ]
+        },
+        %{
+          name: "Week 2",
+          days: [
+            %{
+              name: "Day 1",
+              exercise: "Squat",
+              sets: generate_sets(numbers.squat.tm, 2)
+            },
+            %{
+              name: "Day 2",
+              exercise: "Bench",
+              sets: generate_sets(numbers.bench.tm, 2)
+            },
+            %{
+              name: "Day 3",
+              exercise: "Deadlift",
+              sets: generate_sets(numbers.deadlift.tm, 2)
+            },
+            %{
+              name: "Day 4",
+              exercise: "Overhead Press",
+              sets: generate_sets(numbers.ohp.tm, 2)
             }
           ]
         }
@@ -104,7 +129,7 @@ defmodule LifttribeWeb.CalculatorLive do
     end
   end
 
-  defp generate_sets(tm) do
+  defp generate_sets(tm, 1) do
     [
       %{
         name: "Warm Up",
@@ -135,6 +160,41 @@ defmodule LifttribeWeb.CalculatorLive do
         name: "Set 3 (85%)",
         weight: get_closest_bar_weight(tm * 0.85),
         reps: 5
+      }
+    ]
+  end
+
+  defp generate_sets(tm, 2) do
+    [
+      %{
+        name: "Warm Up",
+        weight: get_closest_bar_weight(tm * 0.5),
+        reps: 5
+      },
+      %{
+        name: "Warm Up",
+        weight: get_closest_bar_weight(tm * 0.5),
+        reps: 5
+      },
+      %{
+        name: "Warm Up",
+        weight: get_closest_bar_weight(tm * 0.5),
+        reps: 5
+      },
+      %{
+        name: "Set 1 (70%)",
+        weight: get_closest_bar_weight(tm * 0.7),
+        reps: 3
+      },
+      %{
+        name: "Set 2 (80%)",
+        weight: get_closest_bar_weight(tm * 0.8),
+        reps: 3
+      },
+      %{
+        name: "Set 3 (90%)",
+        weight: get_closest_bar_weight(tm * 0.9),
+        reps: 3
       }
     ]
   end
