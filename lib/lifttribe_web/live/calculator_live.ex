@@ -131,72 +131,38 @@ defmodule LifttribeWeb.CalculatorLive do
 
   defp generate_sets(tm, 1) do
     [
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Set 1 (65%)",
-        weight: get_closest_bar_weight(tm * 0.65),
-        reps: 5
-      },
-      %{
-        name: "Set 2 (75%)",
-        weight: get_closest_bar_weight(tm * 0.75),
-        reps: 5
-      },
-      %{
-        name: "Set 3 (85%)",
-        weight: get_closest_bar_weight(tm * 0.85),
-        reps: 5
-      }
+      {"Warm Up", 0.5, 5},
+      {"Warm Up", 0.5, 5},
+      {"Warm Up", 0.5, 5},
+      {"Set 1 (65%)", 0.65, 5},
+      {"Set 2 (75%)", 0.75, 5},
+      {"Set 3 (85%)", 0.85, 5}
     ]
+    |> Enum.map(fn {name, multiplier, reps} ->
+      generate_set(name, tm, multiplier, reps)
+    end)
   end
 
   defp generate_sets(tm, 2) do
     [
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Warm Up",
-        weight: get_closest_bar_weight(tm * 0.5),
-        reps: 5
-      },
-      %{
-        name: "Set 1 (70%)",
-        weight: get_closest_bar_weight(tm * 0.7),
-        reps: 3
-      },
-      %{
-        name: "Set 2 (80%)",
-        weight: get_closest_bar_weight(tm * 0.8),
-        reps: 3
-      },
-      %{
-        name: "Set 3 (90%)",
-        weight: get_closest_bar_weight(tm * 0.9),
-        reps: 3
-      }
+      {"Warm Up", 0.5, 5},
+      {"Warm Up", 0.5, 5},
+      {"Warm Up", 0.5, 5},
+      {"Set 1 (70%)", 0.7, 3},
+      {"Set 2 (80%)", 0.8, 3},
+      {"Set 3 (90%)", 0.9, 3}
     ]
+    |> Enum.map(fn {name, multiplier, reps} ->
+      generate_set(name, tm, multiplier, reps)
+    end)
+  end
+
+  defp generate_set(name, tm, multiplier, reps) do
+    %{
+      name: name,
+      weight: get_closest_bar_weight(tm * multiplier),
+      reps: reps
+    }
   end
 
   defp get_set_name(week, day, set) do

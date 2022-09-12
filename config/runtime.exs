@@ -13,6 +13,7 @@ if config_env() == :prod do
       raise """
       environment variable DATABASE_URL is missing.
       """
+
   ecto_ipv6? = System.get_env("ECTO_IPV6") == "true"
 
   pool_size = String.to_integer(System.get_env("POOL_SIZE") || "10")
