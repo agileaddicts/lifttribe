@@ -11,8 +11,7 @@ defmodule Lifttribe.AuthCodeTest do
 
       {:ok, auth_code} = AuthCode.create(athlete)
 
-      auth_code_from_db = Lifttribe.Repo.get(AuthCode, auth_code.id)
-      assert auth_code_from_db
+      assert Lifttribe.Repo.get(AuthCode, auth_code.id)
     end
 
     test "error with duplicated athlete" do
@@ -23,6 +22,18 @@ defmodule Lifttribe.AuthCodeTest do
       refute changeset.valid?
       assert length(changeset.errors) == 1
       assert Enum.any?(changeset.errors, fn {field, _error} -> field == :athlete end)
+    end
+  end
+
+  describe "find_by_uuid/1" do
+    test "returns correct auth_code" do
+      auth_code = insert!(:auth_code)
+
+      assert AuthCode.find_by_uuid(auth_code.uuid)
+    end
+
+    test "returns nil with non-existing auth_code" do
+      refute AuthCode.find_by_uuid(Ecto.UUID.generate())
     end
   end
 end

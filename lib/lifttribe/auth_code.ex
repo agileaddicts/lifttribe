@@ -26,4 +26,9 @@ defmodule Lifttribe.AuthCode do
     |> put_assoc(:athlete, athlete)
     |> Lifttribe.Repo.insert()
   end
+
+  def find_by_uuid(uuid) do
+    Lifttribe.Repo.get_by(AuthCode, uuid: uuid)
+    |> Lifttribe.Repo.preload(:athlete)
+  end
 end
