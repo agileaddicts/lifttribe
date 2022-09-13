@@ -11,6 +11,13 @@ defmodule Lifttribe.Factory do
     }
   end
 
+  def build(:auth_code) do
+    %Lifttribe.AuthCode{
+      uuid: Ecto.UUID.generate(),
+      athlete: build(:athlete)
+    }
+  end
+
   def build(:set) do
     %Lifttribe.Set{
       uuid: Ecto.UUID.generate(),
