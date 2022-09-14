@@ -36,4 +36,16 @@ defmodule Lifttribe.AthleteTest do
       assert Enum.any?(changeset.errors, fn {field, _error} -> field == :email end)
     end
   end
+
+  describe "find_by_uuid/1" do
+    test "returns correct athlete" do
+      athlete = insert!(:athlete)
+
+      assert Athlete.find_by_uuid(athlete.uuid)
+    end
+
+    test "returns nil with non-existing athlete" do
+      refute Athlete.find_by_uuid(Ecto.UUID.generate())
+    end
+  end
 end
