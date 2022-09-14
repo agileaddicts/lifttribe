@@ -27,6 +27,15 @@ defmodule Lifttribe.AuthCode do
     |> Lifttribe.Repo.insert()
   end
 
+  def invalidate(%AuthCode{} = auth_code) do
+    case Lifttribe.Repo.delete(auth_code) do
+      {:ok, _} -> true
+      {:error, _} -> false
+    end
+  rescue
+    Ecto.NoPrimaryKeyValueError -> false
+  end
+
   def find_by_uuid(uuid) do
     Lifttribe.Repo.get_by(AuthCode, uuid: uuid)
     |> Lifttribe.Repo.preload(:athlete)
