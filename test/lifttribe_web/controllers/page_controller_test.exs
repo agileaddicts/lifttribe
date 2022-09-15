@@ -11,11 +11,6 @@ defmodule LifttribeWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "5/3/1 Calculator"
   end
 
-  test "GET /login", %{conn: conn} do
-    conn = get(conn, "/login")
-    assert html_response(conn, 200) =~ "Login"
-  end
-
   test "GET /love", %{conn: conn} do
     conn = get(conn, "/love")
     assert html_response(conn, 200) =~ "Love is Love"
