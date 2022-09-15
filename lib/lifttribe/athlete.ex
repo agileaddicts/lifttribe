@@ -36,4 +36,8 @@ defmodule Lifttribe.Athlete do
   def find_by_uuid(uuid) do
     Lifttribe.Repo.get_by(Athlete, uuid: uuid)
   end
+
+  def find_by_email(email) do
+    Lifttribe.Repo.get_by(Athlete, email: email)
+  end
 end

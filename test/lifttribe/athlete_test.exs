@@ -48,4 +48,16 @@ defmodule Lifttribe.AthleteTest do
       refute Athlete.find_by_uuid(Ecto.UUID.generate())
     end
   end
+
+  describe "find_by_email/1" do
+    test "returns correct athlete" do
+      athlete = insert!(:athlete)
+
+      assert Athlete.find_by_email(athlete.email)
+    end
+
+    test "returns nil with non-existing athlete" do
+      refute Athlete.find_by_email("wrong@lifttribe.local")
+    end
+  end
 end
