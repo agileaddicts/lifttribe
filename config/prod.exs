@@ -19,9 +19,9 @@ config :lifttribe, LifttribeWeb.Endpoint,
   server: true,
   url: [host: "example.com", port: 80]
 
-config :lifttribe, Lifttribe.Mailer, adapter: Swoosh.Adapters.Sendgrid
-
-config :swoosh, :api_client, Swoosh.ApiClient.Finch
+config :lifttribe, Lifttribe.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_client: Swoosh.ApiClient.Finch
 
 # Do not print debug messages in production
 config :logger, level: :info
