@@ -19,13 +19,6 @@ config :lifttribe, LifttribeWeb.Endpoint,
   pubsub_server: Lifttribe.PubSub,
   live_view: [signing_salt: "4/B5l4ve"]
 
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
 config :lifttribe, Lifttribe.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.

@@ -19,6 +19,8 @@ config :lifttribe, LifttribeWeb.Endpoint,
   server: true,
   url: [host: "example.com", port: 80]
 
+config :lifttribe, Lifttribe.Mailer, adapter: Swoosh.Adapters.Sendgrid
+
 # Do not print debug messages in production
 config :logger, level: :info
 
