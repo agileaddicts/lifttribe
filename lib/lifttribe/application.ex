@@ -15,9 +15,10 @@ defmodule Lifttribe.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Lifttribe.PubSub},
       # Start the Endpoint (http/https)
-      LifttribeWeb.Endpoint
+      LifttribeWeb.Endpoint,
       # Start a worker by calling: Lifttribe.Worker.start_link(arg)
       # {Lifttribe.Worker, arg}
+      {Finch, name: Swoosh.Finch}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
