@@ -21,6 +21,8 @@ config :lifttribe, LifttribeWeb.Endpoint,
 
 config :lifttribe, Lifttribe.Mailer, adapter: Swoosh.Adapters.Sendgrid
 
+config :swoosh, :api_client, Swoosh.ApiClient.Finch
+
 # Do not print debug messages in production
 config :logger, level: :info
 
