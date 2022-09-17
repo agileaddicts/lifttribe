@@ -1,1 +1,10 @@
 <h1 class="font-serif text-4xl font-bold text-orange">Login</h1>
+
+<form action={Routes.auth_path(@conn, :send_auth_code)} method="POST" class="">
+  <input type="hidden" name="_csrf_token" value={Phoenix.Controller.get_csrf_token()}>
+  <label class="">
+    Email:
+  </label>
+  <input type="email" class="w-20 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="email" value=""/>
+  <input class="block p-2 mt-2 border-2 border-midnight" type="submit" value="Login" />
+</form>

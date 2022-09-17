@@ -2,6 +2,8 @@
 
 ## Environments
 
+### Development
+
 ### Staging
 
 Access the app at: https://lifttribe.dev

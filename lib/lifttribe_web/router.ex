@@ -1,6 +1,8 @@
 defmodule LifttribeWeb.Router do
   use LifttribeWeb, :router
 
+  alias Lifttribe.Athlete
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule LifttribeWeb.Router do
     plug :put_root_layout, {LifttribeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_user
   end
 
   pipeline :api do
@@ -25,7 +28,9 @@ defmodule LifttribeWeb.Router do
     get "/531", PageController, :five_three_one
     get "/love", PageController, :love
 
+    get "/auth/authenticate_athlete/:athlete_uuid", AuthController, :authenticate
     get "/auth/login", AuthController, :login
+    post "/auth/send_auth_code", AuthController, :send_auth_code
   end
 
   # Other scopes may use custom stacks.
@@ -59,6 +64,20 @@ defmodule LifttribeWeb.Router do
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  defp fetch_user(conn, _opts) do
+    athlete_uuid = get_session(conn, :athlete_uuid)
+
+    athlete =
+      cond do
+        assigned = conn.assigns[:athlete] -> assigned
+        athlete_uuid == nil -> nil
+        true -> Athlete.find_by_uuid(athlete_uuid)
+      end
+
+    conn
+    |> assign(:athlete, athlete)
   end
 
   defp auth(conn, _opts) do
