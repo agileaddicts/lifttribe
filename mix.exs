@@ -48,7 +48,8 @@ defmodule Lifttribe.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:faker, "~> 0.17", only: :test}
+      {:faker, "~> 0.17", only: :test},
+      {:finch, "~> 0.13.0"}
     ]
   end
 
