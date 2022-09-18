@@ -10,7 +10,8 @@ import Config
 config :lifttribe,
   ecto_repos: [Lifttribe.Repo],
   basic_auth_username: nil,
-  basic_auth_password: nil
+  basic_auth_password: nil,
+  base_url: "http://localhost:4000"
 
 # Configures the endpoint
 config :lifttribe, LifttribeWeb.Endpoint,

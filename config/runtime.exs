@@ -4,9 +4,16 @@ if config_env() == :prod do
   basic_auth_username = System.get_env("BASIC_AUTH_USERNAME") || nil
   basic_auth_password = System.get_env("BASIC_AUTH_PASSWORD") || nil
 
+  base_url =
+    System.get_env("BASE_URL") ||
+      raise """
+      environment variable BASE_URL is missing.
+      """
+
   config :lifttribe,
     basic_auth_username: basic_auth_username,
-    basic_auth_password: basic_auth_password
+    basic_auth_password: basic_auth_password,
+    base_url: base_url
 
   database_url =
     System.get_env("DATABASE_URL") ||

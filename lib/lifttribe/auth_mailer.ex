@@ -11,7 +11,12 @@ defmodule Lifttribe.AuthMailer do
     |> from({"Lifttribe", "hello@lifttribe.dev"})
     |> subject("Your login link")
     |> text_body(
-      "Hello #{athlete.username},\n\nUse this link to log in: #{Routes.auth_url(conn, :authenticate, athlete.uuid, auth_code_uuid: auth_code.uuid)}\n\nHave fun at the gym,\nSebastian"
+      "Hello #{athlete.username},\n\nUse this link to log in: #{build_url(Routes.auth_path(conn, :authenticate, athlete.uuid, auth_code_uuid: auth_code.uuid))}\n\nHave fun at the gym,\nSebastian"
     )
+  end
+
+  defp build_url(path) do
+    base_url = Application.fetch_env!(:lifttribe, :base_url)
+    base_url <> path
   end
 end
