@@ -2,6 +2,7 @@ defmodule LifttribeWeb.Router do
   use LifttribeWeb, :router
 
   alias Lifttribe.Athlete
+  alias LifttribeWeb.Router.Helpers, as: Routes
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -31,6 +32,12 @@ defmodule LifttribeWeb.Router do
     get "/auth/authenticate_athlete/:athlete_uuid", AuthController, :authenticate
     get "/auth/login", AuthController, :login
     post "/auth/send_auth_code", AuthController, :send_auth_code
+  end
+
+  scope "/workouts", LifttribeWeb do
+    pipe_through [:browser, :only_allow_athletes]
+
+    get "/", WorkoutController, :index
   end
 
   # Other scopes may use custom stacks.
@@ -88,6 +95,19 @@ defmodule LifttribeWeb.Router do
       username ->
         password = Application.fetch_env!(:lifttribe, :basic_auth_password)
         Plug.BasicAuth.basic_auth(conn, username: username, password: password)
+    end
+  end
+
+  defp only_allow_athletes(conn, _opts) do
+    case conn.assigns[:athlete] do
+      nil ->
+        conn
+        |> put_flash(:error, "You must log in to access this page.")
+        |> redirect(to: Routes.auth_path(conn, :login))
+        |> halt()
+
+      %Athlete{} ->
+        conn
     end
   end
 end
