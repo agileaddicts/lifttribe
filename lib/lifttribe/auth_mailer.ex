@@ -5,7 +5,7 @@ defmodule Lifttribe.AuthMailer do
   alias Lifttribe.AuthCode
   alias LifttribeWeb.Router.Helpers, as: Routes
 
-  def send_login_link(conn, %Athlete{} = athlete, %AuthCode{} = auth_code) do
+  def login_link_email(conn, %Athlete{} = athlete, %AuthCode{} = auth_code) do
     new()
     |> to({athlete.username, athlete.email})
     |> from({"Lifttribe", "hello@lifttribe.dev"})

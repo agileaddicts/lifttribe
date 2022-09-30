@@ -49,7 +49,7 @@ defmodule LifttribeWeb.AuthController do
 
       athlete ->
         auth_code = Lifttribe.Lifttribe.fetch_or_create_auth_code(athlete)
-        AuthMailer.send_login_link(conn, athlete, auth_code) |> Mailer.deliver()
+        AuthMailer.login_link_email(conn, athlete, auth_code) |> Mailer.deliver()
     end
 
     conn
