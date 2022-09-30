@@ -36,4 +36,10 @@ defmodule LifttribeWeb.ConnCase do
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  def log_in_athlete(conn, athlete) do
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:athlete_uuid, athlete.uuid)
+  end
 end
