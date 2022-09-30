@@ -48,25 +48,12 @@ defmodule LifttribeWeb.AuthController do
         nil
 
       athlete ->
-        auth_code = fetch_or_create_auth_code(athlete)
+        auth_code = Lifttribe.Lifttribe.fetch_or_create_auth_code(athlete)
         AuthMailer.send_login_link(conn, athlete, auth_code) |> Mailer.deliver()
     end
 
     conn
     |> put_flash(:info, "We have sent you the login link to your email")
     |> redirect(to: Routes.page_path(conn, :index))
-  end
-
-  defp fetch_or_create_auth_code(athlete) do
-    athlete = athlete |> Lifttribe.Repo.preload(:auth_code)
-
-    case athlete.auth_code do
-      nil ->
-        {:ok, auth_code} = AuthCode.create(athlete)
-        auth_code
-
-      auth_code ->
-        auth_code
-    end
   end
 end
