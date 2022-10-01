@@ -11,17 +11,17 @@ defmodule LifttribeWeb.AuthController do
         "auth_code_uuid" => auth_code_uuid
       }) do
     with %Athlete{} = athlete <- find_athlete(athlete_uuid),
-         true <- auth_code_matches?(athlete, auth_code_uuid),
+         true <- athlete.auth_code.uuid == auth_code_uuid,
          true <- AuthCode.invalidate(athlete.auth_code) do
       conn
       |> put_session(:athlete_uuid, athlete.uuid)
       |> configure_session(renew: true)
-      |> redirect(to: Routes.page_path(conn, :index))
+      |> redirect(to: Routes.workout_path(conn, :index))
     else
       _ ->
         conn
         |> put_flash(:error, "Login not possible!")
-        |> redirect(to: Routes.auth_path(conn, :login))
+        |> redirect(to: Routes.page_path(conn, :index))
     end
   end
 
@@ -29,12 +29,6 @@ defmodule LifttribeWeb.AuthController do
     athlete_uuid
     |> Athlete.find_by_uuid()
     |> Lifttribe.Repo.preload(:auth_code)
-  end
-
-  defp auth_code_matches?(athlete, auth_code_uuid) do
-    athlete = athlete |> Lifttribe.Repo.preload(:auth_code)
-
-    athlete.auth_code.uuid == auth_code_uuid
   end
 
   def login(conn, _params) do
