@@ -6,6 +6,22 @@ defmodule Lifttribe.Lifttribe do
   alias Lifttribe.Repo
   alias Lifttribe.Workout
 
+  def fetch_or_create_todays_workout(%Athlete{} = athlete) do
+    today = Date.utc_today()
+
+    query =
+      from(w in Workout, where: w.athlete_id == ^athlete.id and w.date == ^today, preload: [:sets])
+
+    case Repo.one(query) do
+      nil ->
+        {:ok, workout} = Workout.create(athlete, Date.utc_today())
+        workout
+
+      workout ->
+        workout
+    end
+  end
+
   def fetch_or_create_auth_code(athlete) do
     athlete = athlete |> Lifttribe.Repo.preload(:auth_code)
 

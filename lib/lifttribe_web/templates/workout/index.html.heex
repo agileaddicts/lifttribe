@@ -1,5 +1,7 @@
 <h1 class="font-serif text-4xl font-bold text-center text-orange">Your Workouts</h1>
 
+<p><a href={Routes.workout_path(@conn, :new)}>Start your workout!</a></p>
+
 <%= for workout <- @workouts do %>
   <p><%= workout.date %></p>
   <%= for set <- workout.sets do %>
