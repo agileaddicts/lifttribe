@@ -47,6 +47,10 @@ defmodule Lifttribe.AthleteTest do
     test "returns nil with non-existing athlete" do
       refute Athlete.find_by_uuid(Ecto.UUID.generate())
     end
+
+    test "returns nil without uuid" do
+      refute Athlete.find_by_uuid("wrong")
+    end
   end
 
   describe "find_by_email/1" do

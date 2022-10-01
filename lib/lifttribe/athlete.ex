@@ -34,7 +34,11 @@ defmodule Lifttribe.Athlete do
   end
 
   def find_by_uuid(uuid) do
-    Lifttribe.Repo.get_by(Athlete, uuid: uuid)
+    try do
+      Lifttribe.Repo.get_by(Athlete, uuid: uuid)
+    rescue
+      Ecto.Query.CastError -> nil
+    end
   end
 
   def find_by_email(email) do
