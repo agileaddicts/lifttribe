@@ -32,7 +32,9 @@ jobs:
         with:
           otp-version: ${{ env.OTP_VERSION }}
           elixir-version: ${{ env.ELIXIR_VERSION }}
+      - run: mix deps.get
       - run: mix format --check-formatted
+      - run: MIX_ENV=test mix ecto.setup
       - run: mix test
   deploy-staging:
     name: Deploy app to staging
