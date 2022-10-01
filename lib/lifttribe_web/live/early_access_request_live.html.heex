@@ -1,0 +1,13 @@
+<h2 class="pt-8 font-serif text-2xl f-full text-orange">Get early access</h2>
+
+<%= cond do %>
+  <% @success -> %>
+    <p>Thank you! We'll get in touch as soon as we are ready to show you the app!</p>
+  <% @error -> %>
+    <p>This email address is already registered! We'll get in touch as soon as we are ready to show you the app!</p>
+  <% true -> %>
+    <form class="" phx-submit="save">
+      <input type="email" class="w-40 rounded-md shadow-sm border-slate-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="email" value={@email} placeholder="Your email address"/>
+      <input class="block p-2 mt-2 border-2 border-midnight" type="submit" value="Get access!" />
+    </form>
+<% end %>
