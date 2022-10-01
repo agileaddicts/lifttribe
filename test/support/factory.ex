@@ -18,6 +18,13 @@ defmodule Lifttribe.Factory do
     }
   end
 
+  def build(:early_access_request) do
+    %Lifttribe.EarlyAccessRequest{
+      uuid: Ecto.UUID.generate(),
+      email: Faker.Internet.email()
+    }
+  end
+
   def build(:set) do
     %Lifttribe.Set{
       uuid: Ecto.UUID.generate(),
