@@ -8,19 +8,19 @@ updates:
     schedule:
       day: "monday"
       interval: "weekly"
-      time: "08:00"
+      time: "03:00"
       timezone: "Etc/UTC"
   - directory: "/"
     package-ecosystem: "npm"
     schedule:
       day: "monday"
       interval: "weekly"
-      time: "08:00"
+      time: "03:00"
       timezone: "Etc/UTC"
   - directory: "/"
     package-ecosystem: "mix"
     schedule:
       day: "monday"
       interval: "weekly"
-      time: "08:00"
+      time: "03:00"
       timezone: "Etc/UTC"
