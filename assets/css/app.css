@@ -3,12 +3,11 @@
 @import "tailwindcss/utilities";
 
 @font-face {
-  font-family: "Roboto Slab";
-  src: url('../fonts/roboto_slab.ttf');
+  font-family: "Inter";
+  src: url('../fonts/inter.ttf');
 }
 
 @font-face {
-  font-family: "Raleway";
-  src: url('../fonts/raleway.ttf'), 
-  url('../fonts/raleway.ttf');
+  font-family: "Lexend";
+  src: url('../fonts/lexend.ttf');
 }
