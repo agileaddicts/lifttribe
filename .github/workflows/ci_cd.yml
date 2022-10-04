@@ -38,6 +38,7 @@ jobs:
       - run: mix test
   deploy-staging:
     name: Deploy app to staging
+    concurrency: staging_environment
     needs:
       - test
     runs-on: ubuntu-latest
@@ -48,6 +49,7 @@ jobs:
       - run: flyctl deploy --remote-only --config ./fly.staging.toml
   deploy-production:
     name: Deploy app to production
+    concurrency: production_environment
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
