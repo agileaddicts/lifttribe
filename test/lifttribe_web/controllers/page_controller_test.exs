@@ -3,7 +3,7 @@ defmodule LifttribeWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome, Athletes!"
+    assert html_response(conn, 200) =~ "Welcome"
   end
 
   test "GET /531", %{conn: conn} do
