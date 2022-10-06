@@ -1,7 +1,7 @@
 <div class="w-full max-w-md mx-auto sm:px-4 md:w-96 md:max-w-sm md:px-0">
   <div class="flex flex-col">
     <h1 class="text-lg font-semibold text-slate-900">Sign in to your account</h1>
-    <p class="mt-2 text-sm text-slate-700">Don't have an account? <a class="font-medium text-orange hover:underline" href={Routes.page_path(@conn, :index) <> "#early_access"}>Request early access</a> now!</p>
+    <p class="mt-2 text-sm text-slate-700">Don't have an account? <a class="font-medium text-orange hover:text-orange/80" href={Routes.page_path(@conn, :index) <> "#early_access"}>Request early access</a> now!</p>
   </div>
 
   <form class="grid grid-cols-1 mt-10 mb-20 gap-y-8" action={Routes.auth_path(@conn, :send_auth_code)} method="POST" class="">
