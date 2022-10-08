@@ -1,7 +1,11 @@
 defmodule Lifttribe.Set do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Ecto.UUID
+  alias Lifttribe.Repo
   alias Lifttribe.Set
   alias Lifttribe.Workout
 
@@ -22,7 +26,7 @@ defmodule Lifttribe.Set do
     %Set{}
     |> cast(
       %{
-        uuid: Ecto.UUID.generate(),
+        uuid: UUID.generate(),
         order_index: order_index,
         exercise: exercise,
         weight: weight,
@@ -36,12 +40,12 @@ defmodule Lifttribe.Set do
       [:workout, :order_index],
       name: :sets_workout_id_order_index_index
     )
-    |> Lifttribe.Repo.insert()
+    |> Repo.insert()
   end
 
   def change_comment(%Set{} = set, comment) do
     set
     |> cast(%{comment: comment}, [:comment])
-    |> Lifttribe.Repo.update()
+    |> Repo.update()
   end
 end

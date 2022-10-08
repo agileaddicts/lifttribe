@@ -1,4 +1,6 @@
 defmodule Lifttribe.AuthMailer do
+  @moduledoc false
+
   import Swoosh.Email
 
   alias Lifttribe.Athlete

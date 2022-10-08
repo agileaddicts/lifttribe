@@ -1,36 +1,41 @@
 defmodule Lifttribe.Factory do
+  @moduledoc false
+
+  alias Ecto.UUID
+  alias Faker.Internet
+  alias Faker.Lorem
   alias Lifttribe.Repo
 
   # Factories
 
   def build(:athlete) do
     %Lifttribe.Athlete{
-      uuid: Ecto.UUID.generate(),
-      username: Faker.Internet.user_name(),
-      email: Faker.Internet.email()
+      uuid: UUID.generate(),
+      username: Internet.user_name(),
+      email: Internet.email()
     }
   end
 
   def build(:auth_code) do
     %Lifttribe.AuthCode{
-      uuid: Ecto.UUID.generate(),
+      uuid: UUID.generate(),
       athlete: build(:athlete)
     }
   end
 
   def build(:early_access_request) do
     %Lifttribe.EarlyAccessRequest{
-      uuid: Ecto.UUID.generate(),
-      email: Faker.Internet.email()
+      uuid: UUID.generate(),
+      email: Internet.email()
     }
   end
 
   def build(:set) do
     %Lifttribe.Set{
-      uuid: Ecto.UUID.generate(),
+      uuid: UUID.generate(),
       workout: build(:workout),
       order_index: 0,
-      exercise: Faker.Lorem.word(),
+      exercise: Lorem.word(),
       weight: 50.0,
       reps: 5
     }
@@ -38,7 +43,7 @@ defmodule Lifttribe.Factory do
 
   def build(:workout) do
     %Lifttribe.Workout{
-      uuid: Ecto.UUID.generate(),
+      uuid: UUID.generate(),
       athlete: build(:athlete),
       date: Date.utc_today()
     }

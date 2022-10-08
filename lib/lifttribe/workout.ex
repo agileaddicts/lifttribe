@@ -1,4 +1,6 @@
 defmodule Lifttribe.Workout do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 

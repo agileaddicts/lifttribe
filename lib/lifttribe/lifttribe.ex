@@ -1,4 +1,6 @@
 defmodule Lifttribe.Lifttribe do
+  @moduledoc false
+
   import Ecto.Query
 
   alias Lifttribe.Athlete

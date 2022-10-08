@@ -1,4 +1,6 @@
 defmodule LifttribeWeb.Router do
+  @moduledoc false
+
   use LifttribeWeb, :router
 
   alias Lifttribe.Athlete

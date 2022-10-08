@@ -16,6 +16,8 @@ defmodule Lifttribe.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Changeset
+
   using do
     quote do
       alias Lifttribe.Repo
@@ -42,7 +44,7 @@ defmodule Lifttribe.DataCase do
 
   """
   def errors_on(changeset) do
-    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
+    Changeset.traverse_errors(changeset, fn {message, opts} ->
       Regex.replace(~r"%{(\w+)}", message, fn _, key ->
         opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
       end)

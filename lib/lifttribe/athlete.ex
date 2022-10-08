@@ -1,4 +1,6 @@
 defmodule Lifttribe.Athlete do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -34,11 +36,9 @@ defmodule Lifttribe.Athlete do
   end
 
   def find_by_uuid(uuid) do
-    try do
-      Lifttribe.Repo.get_by(Athlete, uuid: uuid)
-    rescue
-      Ecto.Query.CastError -> nil
-    end
+    Lifttribe.Repo.get_by(Athlete, uuid: uuid)
+  rescue
+    Ecto.Query.CastError -> nil
   end
 
   def find_by_email(email) do

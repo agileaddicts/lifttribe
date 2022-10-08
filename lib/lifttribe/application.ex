@@ -1,9 +1,9 @@
 defmodule Lifttribe.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
+
+  alias LifttribeWeb.Endpoint
 
   @impl true
   def start(_type, _args) do
@@ -15,7 +15,7 @@ defmodule Lifttribe.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Lifttribe.PubSub},
       # Start the Endpoint (http/https)
-      LifttribeWeb.Endpoint,
+      Endpoint,
       # Start a worker by calling: Lifttribe.Worker.start_link(arg)
       # {Lifttribe.Worker, arg}
       {Finch, name: Swoosh.Finch}
@@ -31,7 +31,7 @@ defmodule Lifttribe.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    LifttribeWeb.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end
