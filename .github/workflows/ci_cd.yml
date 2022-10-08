@@ -27,15 +27,23 @@ jobs:
           --health-retries 5
         ports: ["5432:5432"]
     steps:
-      - uses: actions/checkout@v2
-      - uses: erlef/setup-beam@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup erlang & elixir
+        uses: erlef/setup-beam@v1
         with:
           otp-version: ${{ env.OTP_VERSION }}
           elixir-version: ${{ env.ELIXIR_VERSION }}
-      - run: mix deps.get
-      - run: mix format --check-formatted
-      - run: MIX_ENV=test mix ecto.setup
-      - run: mix test
+      - name: Download dependencies
+        run: mix deps.get
+      - name: Check code formatting
+        run: mix format --check-formatted
+      - name: Run tests
+        env:
+          MIX_ENV: test
+        run: mix test
   deploy-staging:
     name: Deploy app to staging
     concurrency: staging_environment
