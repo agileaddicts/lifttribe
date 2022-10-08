@@ -48,6 +48,8 @@ jobs:
         run: mix deps.get
       - name: Check code formatting
         run: mix format --check-formatted
+      - name: run static code analysis
+        run: mix credo
       - name: Run tests
         env:
           MIX_ENV: test
