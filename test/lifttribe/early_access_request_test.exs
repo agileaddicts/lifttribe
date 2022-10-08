@@ -13,8 +13,7 @@ defmodule Lifttribe.EarlyAccessRequestTest do
       assert early_access_request.id
       assert early_access_request.uuid
 
-      early_access_request_from_db =
-        Repo.get(EarlyAccessRequest, early_access_request.id)
+      early_access_request_from_db = Repo.get(EarlyAccessRequest, early_access_request.id)
 
       assert early_access_request_from_db
     end
