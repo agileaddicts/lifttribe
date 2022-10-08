@@ -3,6 +3,7 @@ defmodule Lifttribe.WorkoutTest do
 
   import Lifttribe.Factory
 
+  alias Lifttribe.Repo
   alias Lifttribe.Workout
 
   describe "create/2" do
@@ -14,7 +15,7 @@ defmodule Lifttribe.WorkoutTest do
       assert workout.id
       assert workout.uuid
 
-      workout_from_db = Lifttribe.Repo.get(Workout, workout.id)
+      workout_from_db = Repo.get(Workout, workout.id)
 
       assert workout_from_db
     end
@@ -27,7 +28,7 @@ defmodule Lifttribe.WorkoutTest do
       assert second_workout.id
       assert second_workout.uuid
 
-      workout_from_db = Lifttribe.Repo.get(Workout, second_workout.id)
+      workout_from_db = Repo.get(Workout, second_workout.id)
 
       assert workout_from_db
     end
@@ -41,7 +42,7 @@ defmodule Lifttribe.WorkoutTest do
       assert second_workout.id
       assert second_workout.uuid
 
-      workout_from_db = Lifttribe.Repo.get(Workout, second_workout.id)
+      workout_from_db = Repo.get(Workout, second_workout.id)
 
       assert workout_from_db
     end

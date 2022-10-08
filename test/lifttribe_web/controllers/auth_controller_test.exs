@@ -4,6 +4,9 @@ defmodule LifttribeWeb.AuthControllerTest do
   import Lifttribe.Factory
   import Swoosh.TestAssertions
 
+  alias Lifttribe.AuthMailer
+  alias Lifttribe.Repo
+
   test "GET /auth/authenticate_athlete/:athlete_uuid with correct params", %{conn: conn} do
     auth_code = insert!(:auth_code)
 
@@ -50,8 +53,8 @@ defmodule LifttribeWeb.AuthControllerTest do
     assert redirected_to(conn) == Routes.page_path(conn, :index)
     assert get_flash(conn, :info)
 
-    athlete = athlete |> Lifttribe.Repo.preload(:auth_code)
-    assert_email_sent(Lifttribe.AuthMailer.login_link_email(conn, athlete, athlete.auth_code))
+    athlete = athlete |> Repo.preload(:auth_code)
+    assert_email_sent(AuthMailer.login_link_email(conn, athlete, athlete.auth_code))
   end
 
   test "POST /auth/send_auth_code with non-existing email", %{conn: conn} do

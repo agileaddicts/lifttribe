@@ -5,6 +5,7 @@ defmodule LifttribeWeb.Router do
 
   alias Lifttribe.Athlete
   alias LifttribeWeb.Router.Helpers, as: Routes
+  alias Plug.BasicAuth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -97,7 +98,7 @@ defmodule LifttribeWeb.Router do
 
       username ->
         password = Application.fetch_env!(:lifttribe, :basic_auth_password)
-        Plug.BasicAuth.basic_auth(conn, username: username, password: password)
+        BasicAuth.basic_auth(conn, username: username, password: password)
     end
   end
 

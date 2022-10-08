@@ -4,7 +4,9 @@ defmodule Lifttribe.EarlyAccessRequest do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Ecto.UUID
   alias Lifttribe.EarlyAccessRequest
+  alias Lifttribe.Repo
 
   schema "early_access_requests" do
     field :uuid, :binary_id
@@ -17,13 +19,13 @@ defmodule Lifttribe.EarlyAccessRequest do
     %EarlyAccessRequest{}
     |> cast(
       %{
-        uuid: Ecto.UUID.generate(),
+        uuid: UUID.generate(),
         email: email
       },
       [:uuid, :email]
     )
     |> validate_required([:uuid, :email])
     |> unique_constraint(:email, name: :early_access_requests_email_index)
-    |> Lifttribe.Repo.insert()
+    |> Repo.insert()
   end
 end

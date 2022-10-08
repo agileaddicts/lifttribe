@@ -4,7 +4,9 @@ defmodule LifttribeWeb.AuthController do
   alias Lifttribe.Athlete
   alias Lifttribe.AuthCode
   alias Lifttribe.AuthMailer
+  alias Lifttribe.Lifttribe, as: LT
   alias Lifttribe.Mailer
+  alias Lifttribe.Repo
 
   def authenticate(conn, %{
         "athlete_uuid" => athlete_uuid,
@@ -28,7 +30,7 @@ defmodule LifttribeWeb.AuthController do
   defp find_athlete(athlete_uuid) do
     athlete_uuid
     |> Athlete.find_by_uuid()
-    |> Lifttribe.Repo.preload(:auth_code)
+    |> Repo.preload(:auth_code)
   end
 
   def login(conn, _params) do
@@ -42,7 +44,7 @@ defmodule LifttribeWeb.AuthController do
         nil
 
       athlete ->
-        auth_code = Lifttribe.Lifttribe.fetch_or_create_auth_code(athlete)
+        auth_code = LT.fetch_or_create_auth_code(athlete)
         AuthMailer.login_link_email(conn, athlete, auth_code) |> Mailer.deliver()
     end
 

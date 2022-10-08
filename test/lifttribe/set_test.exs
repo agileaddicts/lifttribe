@@ -3,6 +3,7 @@ defmodule Lifttribe.SetTest do
 
   import Lifttribe.Factory
 
+  alias Lifttribe.Repo
   alias Lifttribe.Set
 
   describe "create/5" do
@@ -14,7 +15,7 @@ defmodule Lifttribe.SetTest do
       assert set.id
       assert set.uuid
 
-      set_from_db = Lifttribe.Repo.get(Set, set.id)
+      set_from_db = Repo.get(Set, set.id)
 
       assert set_from_db
     end
@@ -27,7 +28,7 @@ defmodule Lifttribe.SetTest do
       assert second_set.id
       assert second_set.uuid
 
-      set_from_db = Lifttribe.Repo.get(Set, second_set.id)
+      set_from_db = Repo.get(Set, second_set.id)
 
       assert set_from_db
     end
@@ -43,7 +44,7 @@ defmodule Lifttribe.SetTest do
       assert second_set.id
       assert second_set.uuid
 
-      set_from_db = Lifttribe.Repo.get(Set, second_set.id)
+      set_from_db = Repo.get(Set, second_set.id)
 
       assert set_from_db
     end

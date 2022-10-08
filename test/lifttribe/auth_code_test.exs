@@ -3,7 +3,9 @@ defmodule Lifttribe.AuthCodeTest do
 
   import Lifttribe.Factory
 
+  alias Ecto.UUID
   alias Lifttribe.AuthCode
+  alias Lifttribe.Repo
 
   describe "create/2" do
     test "correct insert with unique Athlete" do
@@ -11,7 +13,7 @@ defmodule Lifttribe.AuthCodeTest do
 
       {:ok, auth_code} = AuthCode.create(athlete)
 
-      assert Lifttribe.Repo.get(AuthCode, auth_code.id)
+      assert Repo.get(AuthCode, auth_code.id)
     end
 
     test "error with duplicated athlete" do
@@ -48,7 +50,7 @@ defmodule Lifttribe.AuthCodeTest do
     end
 
     test "returns nil with non-existing auth_code" do
-      refute AuthCode.find_by_uuid(Ecto.UUID.generate())
+      refute AuthCode.find_by_uuid(UUID.generate())
     end
   end
 end

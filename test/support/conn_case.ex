@@ -17,6 +17,11 @@ defmodule LifttribeWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Lifttribe.Repo
+  alias Phoenix.ConnTest
+  alias Plug.Conn
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -32,14 +37,14 @@ defmodule LifttribeWeb.ConnCase do
   end
 
   setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Lifttribe.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    pid = Sandbox.start_owner!(Repo, shared: not tags[:async])
+    on_exit(fn -> Sandbox.stop_owner(pid) end)
+    {:ok, conn: ConnTest.build_conn()}
   end
 
   def log_in_athlete(conn, athlete) do
     conn
-    |> Phoenix.ConnTest.init_test_session(%{})
-    |> Plug.Conn.put_session(:athlete_uuid, athlete.uuid)
+    |> ConnTest.init_test_session(%{})
+    |> Conn.put_session(:athlete_uuid, athlete.uuid)
   end
 end

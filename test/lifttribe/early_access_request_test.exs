@@ -4,6 +4,7 @@ defmodule Lifttribe.EarlyAccessRequestTest do
   import Lifttribe.Factory
 
   alias Lifttribe.EarlyAccessRequest
+  alias Lifttribe.Repo
 
   describe "create/2" do
     test "correct insert with unique username and email" do
@@ -13,7 +14,7 @@ defmodule Lifttribe.EarlyAccessRequestTest do
       assert early_access_request.uuid
 
       early_access_request_from_db =
-        Lifttribe.Repo.get(EarlyAccessRequest, early_access_request.id)
+        Repo.get(EarlyAccessRequest, early_access_request.id)
 
       assert early_access_request_from_db
     end

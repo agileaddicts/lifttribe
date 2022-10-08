@@ -3,7 +3,9 @@ defmodule Lifttribe.AthleteTest do
 
   import Lifttribe.Factory
 
+  alias Ecto.UUID
   alias Lifttribe.Athlete
+  alias Lifttribe.Repo
 
   describe "create/2" do
     test "correct insert with unique username and email" do
@@ -12,7 +14,7 @@ defmodule Lifttribe.AthleteTest do
       assert athlete.id
       assert athlete.uuid
 
-      athlete_from_db = Lifttribe.Repo.get(Athlete, athlete.id)
+      athlete_from_db = Repo.get(Athlete, athlete.id)
       assert athlete_from_db
     end
 
@@ -45,7 +47,7 @@ defmodule Lifttribe.AthleteTest do
     end
 
     test "returns nil with non-existing athlete" do
-      refute Athlete.find_by_uuid(Ecto.UUID.generate())
+      refute Athlete.find_by_uuid(UUID.generate())
     end
 
     test "returns nil without uuid" do

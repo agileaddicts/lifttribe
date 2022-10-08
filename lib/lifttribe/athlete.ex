@@ -4,8 +4,11 @@ defmodule Lifttribe.Athlete do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Ecto.Query.CastError
+  alias Ecto.UUID
   alias Lifttribe.Athlete
   alias Lifttribe.AuthCode
+  alias Lifttribe.Repo
   alias Lifttribe.Workout
 
   schema "athletes" do
@@ -23,7 +26,7 @@ defmodule Lifttribe.Athlete do
     %Athlete{}
     |> cast(
       %{
-        uuid: Ecto.UUID.generate(),
+        uuid: UUID.generate(),
         username: username,
         email: email
       },
@@ -32,16 +35,16 @@ defmodule Lifttribe.Athlete do
     |> validate_required([:uuid, :username, :email])
     |> unique_constraint(:username, name: :athletes_username_index)
     |> unique_constraint(:email, name: :athletes_email_index)
-    |> Lifttribe.Repo.insert()
+    |> Repo.insert()
   end
 
   def find_by_uuid(uuid) do
-    Lifttribe.Repo.get_by(Athlete, uuid: uuid)
+    Repo.get_by(Athlete, uuid: uuid)
   rescue
-    Ecto.Query.CastError -> nil
+    CastError -> nil
   end
 
   def find_by_email(email) do
-    Lifttribe.Repo.get_by(Athlete, email: email)
+    Repo.get_by(Athlete, email: email)
   end
 end
