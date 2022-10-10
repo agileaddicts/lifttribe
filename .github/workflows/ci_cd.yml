@@ -53,7 +53,9 @@ jobs:
       - name: Check code formatting
         run: mix format --check-formatted
       - name: Run static code analysis
-        run: mix credo
+        run: |
+          mix credo
+          mix dialyzer
       - name: Run a security vulnerabilities audit
         run: |
           mix deps.audit
