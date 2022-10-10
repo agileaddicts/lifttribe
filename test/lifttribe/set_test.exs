@@ -64,9 +64,9 @@ defmodule Lifttribe.SetTest do
     test "correct update with valid comment" do
       set = insert!(:set)
 
-      {:ok, set} = Set.change_comment(set, "Some random comment")
+      {:ok, changed_set} = Set.change_comment(set, "Some random comment")
 
-      assert set.comment
+      assert changed_set.comment
     end
   end
 end

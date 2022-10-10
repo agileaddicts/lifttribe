@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Refactor.ModuleDependencies
 defmodule LifttribeWeb.Router do
   @moduledoc false
 
@@ -92,8 +93,7 @@ defmodule LifttribeWeb.Router do
         true -> Athlete.find_by_uuid(athlete_uuid)
       end
 
-    conn
-    |> assign(:athlete, athlete)
+    assign(conn, :athlete, athlete)
   end
 
   defp auth(conn, _opts) do

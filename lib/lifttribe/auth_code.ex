@@ -42,7 +42,8 @@ defmodule Lifttribe.AuthCode do
   end
 
   def find_by_uuid(uuid) do
-    Repo.get_by(AuthCode, uuid: uuid)
+    AuthCode
+    |> Repo.get_by(uuid: uuid)
     |> Repo.preload(:athlete)
   end
 end

@@ -25,7 +25,7 @@ defmodule Lifttribe.Lifttribe do
   end
 
   def fetch_or_create_auth_code(athlete) do
-    athlete = athlete |> Repo.preload(:auth_code)
+    athlete = Repo.preload(athlete, :auth_code)
 
     case athlete.auth_code do
       nil ->

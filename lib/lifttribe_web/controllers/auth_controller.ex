@@ -20,7 +20,7 @@ defmodule LifttribeWeb.AuthController do
       |> configure_session(renew: true)
       |> redirect(to: Routes.workout_path(conn, :index))
     else
-      _ ->
+      _else ->
         conn
         |> put_flash(:error, "Login not possible!")
         |> redirect(to: Routes.page_path(conn, :index))
@@ -45,7 +45,7 @@ defmodule LifttribeWeb.AuthController do
 
       athlete ->
         auth_code = LT.fetch_or_create_auth_code(athlete)
-        AuthMailer.login_link_email(conn, athlete, auth_code) |> Mailer.deliver()
+        conn |> AuthMailer.login_link_email(athlete, auth_code) |> Mailer.deliver()
     end
 
     conn

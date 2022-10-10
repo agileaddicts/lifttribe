@@ -47,7 +47,8 @@ defmodule Lifttribe.DataCase do
   """
   def errors_on(changeset) do
     Changeset.traverse_errors(changeset, fn {message, opts} ->
-      Regex.replace(~r"%{(\w+)}", message, fn _, key ->
+      Regex.replace(~r"%{(\w+)}", message, fn _id, key ->
+        # credo:disable-for-next-line Credo.Check.Readability.NestedFunctionCalls
         opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
       end)
     end)

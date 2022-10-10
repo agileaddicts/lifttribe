@@ -110,7 +110,7 @@ defmodule LifttribeWeb.CalculatorLive do
   end
 
   defp extract_exercise_pr(params, name) do
-    case Map.get(params, name, "0") |> Integer.parse() do
+    case params |> Map.get(name, "0") |> Integer.parse() do
       {num, ""} -> num
       _else -> 0
     end
@@ -130,31 +130,35 @@ defmodule LifttribeWeb.CalculatorLive do
   end
 
   defp generate_sets(tm, 1) do
-    [
-      {"Warm Up", 0.5, 5},
-      {"Warm Up", 0.5, 5},
-      {"Warm Up", 0.5, 5},
-      {"Set 1 (65%)", 0.65, 5},
-      {"Set 2 (75%)", 0.75, 5},
-      {"Set 3 (85%)", 0.85, 5}
-    ]
-    |> Enum.map(fn {name, multiplier, reps} ->
-      generate_set(name, tm, multiplier, reps)
-    end)
+    Enum.map(
+      [
+        {"Warm Up", 0.5, 5},
+        {"Warm Up", 0.5, 5},
+        {"Warm Up", 0.5, 5},
+        {"Set 1 (65%)", 0.65, 5},
+        {"Set 2 (75%)", 0.75, 5},
+        {"Set 3 (85%)", 0.85, 5}
+      ],
+      fn {name, multiplier, reps} ->
+        generate_set(name, tm, multiplier, reps)
+      end
+    )
   end
 
   defp generate_sets(tm, 2) do
-    [
-      {"Warm Up", 0.5, 5},
-      {"Warm Up", 0.5, 5},
-      {"Warm Up", 0.5, 5},
-      {"Set 1 (70%)", 0.7, 3},
-      {"Set 2 (80%)", 0.8, 3},
-      {"Set 3 (90%)", 0.9, 3}
-    ]
-    |> Enum.map(fn {name, multiplier, reps} ->
-      generate_set(name, tm, multiplier, reps)
-    end)
+    Enum.map(
+      [
+        {"Warm Up", 0.5, 5},
+        {"Warm Up", 0.5, 5},
+        {"Warm Up", 0.5, 5},
+        {"Set 1 (70%)", 0.7, 3},
+        {"Set 2 (80%)", 0.8, 3},
+        {"Set 3 (90%)", 0.9, 3}
+      ],
+      fn {name, multiplier, reps} ->
+        generate_set(name, tm, multiplier, reps)
+      end
+    )
   end
 
   defp generate_set(name, tm, multiplier, reps) do
@@ -165,16 +169,16 @@ defmodule LifttribeWeb.CalculatorLive do
     }
   end
 
-  defp get_set_name(week, day, set) do
-    with day when not is_nil(day) <- Enum.at(week.days, day, nil),
-         set when not is_nil(day) <- Enum.at(day.sets, set, nil) do
+  defp get_set_name(week, day_int, set) do
+    with day when not is_map(day) <- Enum.at(week.days, day_int, nil),
+         set when not is_map(set) <- Enum.at(day.sets, set, nil) do
       set.name
     end
   end
 
-  defp get_set_weight_and_reps(week, day, set) do
-    with day when not is_nil(day) <- Enum.at(week.days, day, nil),
-         set when not is_nil(day) <- Enum.at(day.sets, set, nil) do
+  defp get_set_weight_and_reps(week, day_int, set) do
+    with day when not is_map(day) <- Enum.at(week.days, day_int, nil),
+         set when not is_map(set) <- Enum.at(day.sets, set, nil) do
       "#{set.weight} kg x #{set.reps}"
     end
   end

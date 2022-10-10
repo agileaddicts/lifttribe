@@ -62,9 +62,9 @@ defmodule Lifttribe.WorkoutTest do
     test "correct update with valid comment" do
       workout = insert!(:workout)
 
-      {:ok, workout} = Workout.change_comment(workout, "Some random comment")
+      {:ok, changed_workout} = Workout.change_comment(workout, "Some random comment")
 
-      assert workout.comment
+      assert changed_workout.comment
     end
   end
 end

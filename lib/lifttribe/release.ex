@@ -3,21 +3,22 @@ defmodule Lifttribe.Release do
   Used for executing DB release tasks when run in production without Mix
   installed.
   """
-  @app :lifttribe
 
   alias Ecto.Migrator
+
+  @app :lifttribe
 
   def migrate do
     load_app()
 
     for repo <- repos() do
-      {:ok, _, _} = Migrator.with_repo(repo, &Migrator.run(&1, :up, all: true))
+      {:ok, _fun_return, _apps} = Migrator.with_repo(repo, &Migrator.run(&1, :up, all: true))
     end
   end
 
   def rollback(repo, version) do
     load_app()
-    {:ok, _, _} = Migrator.with_repo(repo, &Migrator.run(&1, :down, to: version))
+    {:ok, _fun_return, _apps} = Migrator.with_repo(repo, &Migrator.run(&1, :down, to: version))
   end
 
   defp repos do
