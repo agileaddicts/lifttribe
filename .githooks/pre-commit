@@ -2,6 +2,7 @@
 set -e
 
 mix deps.get
+mix compile --all-warnings --warnings-as-errors
 mix hex.audit
 mix format --check-formatted
 mix credo
