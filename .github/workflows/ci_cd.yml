@@ -46,6 +46,8 @@ jobs:
           key: ${{ runner.os }}-mix-${{ env.OTP_VERSION }}-${{ env.ELIXIR_VERSION }}-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
       - name: Download dependencies
         run: mix deps.get
+      - name: Compile code
+        name: mix compile --all-warnings --warnings-as-errors
       - name: Check retired dependencies
         run: mix hex.audit
       - name: Check code formatting
