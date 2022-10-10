@@ -53,7 +53,9 @@ jobs:
       - name: Run static code analysis
         run: mix credo
       - name: Run a security vulnerabilities audit
-        run: mix deps.audit
+        run: |
+          mix deps.audit
+          mix sobelow
       - name: Run tests
         env:
           MIX_ENV: test
