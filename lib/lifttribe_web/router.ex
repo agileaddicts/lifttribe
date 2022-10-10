@@ -13,7 +13,7 @@ defmodule LifttribeWeb.Router do
     plug :fetch_live_flash
     plug :put_root_layout, {LifttribeWeb.LayoutView, :root}
     plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug :put_secure_browser_headers, %{"content-security-policy" => "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:;"}
     plug :fetch_user
   end
 
