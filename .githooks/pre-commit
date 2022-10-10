@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+mix deps.get
+mix hex.audit
+mix format --check-formatted
+mix credo
+mix deps.audit
+mix sobelow
+mix test
