@@ -51,7 +51,8 @@ defmodule Lifttribe.MixProject do
       {:faker, "~> 0.17", only: :test},
       {:finch, "~> 0.13.0"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:mix_audit, "~> 2.0", only: [:dev, :test], runtime: false}
+      {:mix_audit, "~> 2.0", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.8", only: :dev}
     ]
   end
 
