@@ -53,7 +53,8 @@ defmodule Lifttribe.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:mix_audit, "~> 2.0", only: [:dev, :test], runtime: false},
       {:sobelow, "~> 0.8", only: :dev},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:nicene, "~> 0.7.0", only: [:dev, :test], runtime: false}
     ]
   end
 

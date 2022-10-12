@@ -111,7 +111,6 @@
           {Credo.Check.Warning.ExpensiveEmptyEnumCheck, []},
           {Credo.Check.Warning.IExPry, []},
           {Credo.Check.Warning.IoInspect, []},
-          {Credo.Check.Warning.LazyLogging, false},
           {Credo.Check.Warning.LeakyEnvironment, []},
           {Credo.Check.Warning.MapGetUnsafePass, []},
           {Credo.Check.Warning.MixEnv, []},
@@ -129,9 +128,29 @@
           {Credo.Check.Warning.UnusedRegexOperation, []},
           {Credo.Check.Warning.UnusedStringOperation, []},
           {Credo.Check.Warning.UnusedTupleOperation, []},
-          {Credo.Check.Warning.UnsafeExec, []}
+          {Credo.Check.Warning.UnsafeExec, []},
+
+          #
+          ## Nicene
+          #
+          {Nicene.AliasImportGrouping, []},
+          {Nicene.AvoidForbiddenNamespaces, false},
+          {Nicene.AvoidImportsFromCurrentApplication, []},
+          {Nicene.ConsistentFunctionDefinitions, false},
+          {Nicene.DocumentGraphqlSchema, []},
+          {Nicene.EctoSchemaDirectories, false},
+          {Nicene.EnsureTestFilePattern, false},
+          {Nicene.FileAndModuleName, false},
+          {Nicene.FileTopToBottom, false},
+          {Nicene.NoSpecsPrivateFunctions, []},
+          {Nicene.PublicFunctionsFirst, false},
+          {Nicene.TestsInTestFolder, []},
+          {Nicene.TrueFalseCaseStatements, false},
+          {Nicene.UnnecessaryPatternMatching, false}
         ],
-        disabled: []
+        disabled: [
+          {Credo.Check.Warning.LazyLogging, []}
+        ]
       }
     }
   ]
