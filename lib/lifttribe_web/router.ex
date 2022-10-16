@@ -39,6 +39,11 @@ defmodule LifttribeWeb.Router do
     get "/love", PageController, :love
 
     get "/auth/authenticate_athlete/:athlete_uuid", AuthController, :authenticate
+
+    if Mix.env() == :dev do
+      get "/auth/direct_login", AuthController, :direct_login
+    end
+
     get "/auth/login", AuthController, :login
     post "/auth/send_auth_code", AuthController, :send_auth_code
   end

@@ -33,6 +33,21 @@ defmodule LifttribeWeb.AuthController do
     |> Repo.preload(:auth_code)
   end
 
+  def direct_login(conn, %{"email" => email}) do
+    case Athlete.find_by_email(email) do
+      nil ->
+        conn
+        |> put_flash(:error, "Login not possible!")
+        |> redirect(to: Routes.page_path(conn, :index))
+
+      athlete ->
+        conn
+        |> put_session(:athlete_uuid, athlete.uuid)
+        |> configure_session(renew: true)
+        |> redirect(to: Routes.workout_path(conn, :index))
+    end
+  end
+
   def login(conn, _params) do
     render(conn, "login.html", page_title: "Login")
   end
