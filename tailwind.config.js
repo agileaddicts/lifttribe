@@ -12,6 +12,8 @@ module.exports = {
       white: colors.white,
       slate: colors.slate,
       indigo: colors.indigo,
+      blue: colors.blue,
+      red: colors.red,
       // custom colors
       midnight: '#23252e',
       orange: '#ff9045'

@@ -6,7 +6,9 @@ defmodule LifttribeWeb.PageController do
   end
 
   def index(conn, _params) do
-    render(conn, "index.html", page_title: "Home")
+    conn
+    # |> put_flash(:error, "Test text")
+    |> render("index.html", page_title: "Home")
   end
 
   def love(conn, _params) do
