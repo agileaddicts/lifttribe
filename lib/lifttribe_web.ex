@@ -46,7 +46,7 @@ defmodule LifttribeWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {LifttribeWeb.LayoutView, "live.html"}
+        layout: {LifttribeWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end
