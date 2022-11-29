@@ -10,8 +10,8 @@ on:
 
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-  ELIXIR_VERSION: "1.14.0"
-  OTP_VERSION: "25.0"
+  ELIXIR_VERSION: "1.14.2"
+  OTP_VERSION: "25.1"
 
 jobs:
   test:
