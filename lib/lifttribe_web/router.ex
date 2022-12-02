@@ -36,7 +36,7 @@ defmodule LifttribeWeb.Router do
 
     get "/", PageController, :index
     get "/531", PageController, :five_three_one
-    get "/love", PageController, :love
+    live "/love", LoveLive
 
     get "/auth/authenticate_athlete/:athlete_uuid", AuthController, :authenticate
 
