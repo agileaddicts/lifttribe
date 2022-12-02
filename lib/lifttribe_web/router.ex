@@ -35,7 +35,6 @@ defmodule LifttribeWeb.Router do
     pipe_through [:browser, :basic_auth]
 
     get "/", PageController, :index
-    get "/531", PageController, :five_three_one
     live "/love", LoveLive
 
     get "/auth/authenticate_athlete/:athlete_uuid", AuthController, :authenticate
