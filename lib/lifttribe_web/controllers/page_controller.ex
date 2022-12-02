@@ -8,8 +8,4 @@ defmodule LifttribeWeb.PageController do
   def index(conn, _params) do
     render(conn, "index.html", page_title: "Home")
   end
-
-  def love(conn, _params) do
-    render(conn, "love.html", page_title: "♡")
-  end
 end
