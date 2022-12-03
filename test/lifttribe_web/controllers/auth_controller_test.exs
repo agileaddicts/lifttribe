@@ -26,7 +26,7 @@ defmodule LifttribeWeb.AuthControllerTest do
     conn =
       get(conn, "/auth/authenticate_athlete/#{auth_code.athlete.uuid}", auth_code_uuid: "wrong")
 
-    assert redirected_to(conn) == Routes.page_path(conn, :index)
+    assert redirected_to(conn) == "/"
     assert get_flash(conn, :error)
   end
 
@@ -37,7 +37,7 @@ defmodule LifttribeWeb.AuthControllerTest do
 
     conn = get(conn, "/auth/authenticate_athlete/wrong", auth_code_uuid: auth_code.uuid)
 
-    assert redirected_to(conn) == Routes.page_path(conn, :index)
+    assert redirected_to(conn) == "/"
     assert get_flash(conn, :error)
   end
 
@@ -50,7 +50,7 @@ defmodule LifttribeWeb.AuthControllerTest do
     athlete = insert!(:athlete)
 
     conn = post(conn, "/auth/send_auth_code", email: athlete.email)
-    assert redirected_to(conn) == Routes.page_path(conn, :index)
+    assert redirected_to(conn) == "/"
     assert get_flash(conn, :info)
 
     athlete_from_db = Repo.preload(athlete, :auth_code)
@@ -59,7 +59,7 @@ defmodule LifttribeWeb.AuthControllerTest do
 
   test "POST /auth/send_auth_code with non-existing email", %{conn: conn} do
     conn = post(conn, "/auth/send_auth_code", email: "nonexisting@lifttribe.local")
-    assert redirected_to(conn) == Routes.page_path(conn, :index)
+    assert redirected_to(conn) == "/"
     assert get_flash(conn, :info)
     refute_email_sent()
   end

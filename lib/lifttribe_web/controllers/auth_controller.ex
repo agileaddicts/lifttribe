@@ -23,7 +23,7 @@ defmodule LifttribeWeb.AuthController do
       _else ->
         conn
         |> put_flash(:error, "Login not possible!")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: "/")
     end
   end
 
@@ -38,7 +38,7 @@ defmodule LifttribeWeb.AuthController do
       nil ->
         conn
         |> put_flash(:error, "Login not possible!")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: "/")
 
       athlete ->
         conn
@@ -65,6 +65,6 @@ defmodule LifttribeWeb.AuthController do
 
     conn
     |> put_flash(:info, "We have sent you the login link to your email")
-    |> redirect(to: Routes.page_path(conn, :index))
+    |> redirect(to: "/")
   end
 end
