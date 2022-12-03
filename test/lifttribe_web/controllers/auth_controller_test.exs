@@ -15,7 +15,7 @@ defmodule LifttribeWeb.AuthControllerTest do
         auth_code_uuid: auth_code.uuid
       )
 
-    assert redirected_to(conn) == Routes.workout_path(conn, :index)
+    assert redirected_to(conn) == "/workouts"
   end
 
   test "GET /auth/authenticate_athlete/:athlete_uuid with incorrect auth_code_id params", %{

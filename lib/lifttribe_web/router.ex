@@ -50,7 +50,7 @@ defmodule LifttribeWeb.Router do
   scope "/workouts", LifttribeWeb do
     pipe_through [:browser, :only_allow_athletes]
 
-    get "/", WorkoutController, :index
+    live "/", WorkoutIndexLive
     get "/new", WorkoutController, :new
   end
 

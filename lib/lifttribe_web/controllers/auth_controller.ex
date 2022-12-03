@@ -18,7 +18,7 @@ defmodule LifttribeWeb.AuthController do
       conn
       |> put_session(:athlete_uuid, athlete.uuid)
       |> configure_session(renew: true)
-      |> redirect(to: Routes.workout_path(conn, :index))
+      |> redirect(to: "/workouts")
     else
       _else ->
         conn
@@ -44,7 +44,7 @@ defmodule LifttribeWeb.AuthController do
         conn
         |> put_session(:athlete_uuid, athlete.uuid)
         |> configure_session(renew: true)
-        |> redirect(to: Routes.workout_path(conn, :index))
+        |> redirect(to: "/workouts")
     end
   end
 
