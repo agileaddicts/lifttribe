@@ -51,7 +51,7 @@ defmodule LifttribeWeb.Router do
     pipe_through [:browser, :only_allow_athletes]
 
     live "/", WorkoutIndexLive
-    get "/new", WorkoutController, :new
+    live "/create", WorkoutCreateLive
   end
 
   # Other scopes may use custom stacks.
