@@ -2,6 +2,7 @@ defmodule LifttribeWeb.WorkoutIndexLive do
   use Phoenix.LiveView
 
   alias Lifttribe.Athlete
+  alias Lifttribe.Lifttribe
 
   def mount(_params, session, socket) do
     athlete =
@@ -10,7 +11,7 @@ defmodule LifttribeWeb.WorkoutIndexLive do
         athlete_uuid -> Athlete.find_by_uuid(athlete_uuid)
       end
 
-    workouts = Lifttribe.Lifttribe.latest_workouts(athlete)
+    workouts = Lifttribe.latest_workouts(athlete)
 
     socket = assign(socket, athlete: athlete, workouts: workouts)
 
