@@ -43,7 +43,6 @@ defmodule LifttribeWeb.Router do
     end
 
     live "/login", LoginLive
-    post "/auth/send_auth_code", AuthController, :send_auth_code
   end
 
   scope "/workouts", LifttribeWeb do

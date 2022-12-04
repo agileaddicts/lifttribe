@@ -3,9 +3,6 @@ defmodule LifttribeWeb.AuthController do
 
   alias Lifttribe.Athlete
   alias Lifttribe.AuthCode
-  alias Lifttribe.AuthMailer
-  alias Lifttribe.Lifttribe, as: LT
-  alias Lifttribe.Mailer
   alias Lifttribe.Repo
 
   def authenticate(conn, %{
@@ -46,21 +43,5 @@ defmodule LifttribeWeb.AuthController do
         |> configure_session(renew: true)
         |> redirect(to: "/workouts")
     end
-  end
-
-  def send_auth_code(conn, %{"email" => email}) do
-    case Athlete.find_by_email(email) do
-      # do nothing
-      nil ->
-        nil
-
-      athlete ->
-        auth_code = LT.fetch_or_create_auth_code(athlete)
-        conn |> AuthMailer.login_link_email(athlete, auth_code) |> Mailer.deliver()
-    end
-
-    conn
-    |> put_flash(:info, "We have sent you the login link to your email")
-    |> redirect(to: "/")
   end
 end
