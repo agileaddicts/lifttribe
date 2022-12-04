@@ -4,7 +4,7 @@
     <p class="mt-2 text-sm text-slate-700">Don't have an account? <a class="font-medium text-orange hover:text-orange/80" href="/#early_access">Request early access</a> now!</p>
   </div>
 
-  <form class="grid grid-cols-1 mt-10 mb-20 gap-y-8" action={Routes.auth_path(@conn, :send_auth_code)} method="POST" class="">
+  <form class="grid grid-cols-1 mt-10 mb-20 gap-y-8" action="/auth/send_auth_code" method="POST" class="">
     <input type="hidden" name="_csrf_token" value={Phoenix.Controller.get_csrf_token()}>
     <div>
       <label class="block mb-3 text-sm font-medium text-slate-700" for="email">

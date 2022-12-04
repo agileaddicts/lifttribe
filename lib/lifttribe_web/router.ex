@@ -5,7 +5,6 @@ defmodule LifttribeWeb.Router do
   use LifttribeWeb, :router
 
   alias Lifttribe.Athlete
-  alias LifttribeWeb.Router.Helpers, as: Routes
   alias Plug.BasicAuth
 
   pipeline :browser do
@@ -43,7 +42,7 @@ defmodule LifttribeWeb.Router do
       get "/auth/direct_login", AuthController, :direct_login
     end
 
-    get "/auth/login", AuthController, :login
+    live "/login", LoginLive
     post "/auth/send_auth_code", AuthController, :send_auth_code
   end
 
@@ -116,7 +115,7 @@ defmodule LifttribeWeb.Router do
       nil ->
         conn
         |> put_flash(:error, "You must log in to access this page.")
-        |> redirect(to: Routes.auth_path(conn, :login))
+        |> redirect(to: "/login")
         |> halt()
 
       %Athlete{} ->

@@ -48,10 +48,6 @@ defmodule LifttribeWeb.AuthController do
     end
   end
 
-  def login(conn, _params) do
-    render(conn, "login.html", page_title: "Login")
-  end
-
   def send_auth_code(conn, %{"email" => email}) do
     case Athlete.find_by_email(email) do
       # do nothing

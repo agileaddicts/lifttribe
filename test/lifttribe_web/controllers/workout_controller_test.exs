@@ -17,6 +17,6 @@ defmodule LifttribeWeb.WorkoutControllerTest do
   test "GET /workouts without session", %{conn: conn} do
     conn = get(conn, "/workouts")
 
-    assert redirected_to(conn) == Routes.auth_path(conn, :login)
+    assert redirected_to(conn) == "/login"
   end
 end

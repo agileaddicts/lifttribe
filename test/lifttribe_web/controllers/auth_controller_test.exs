@@ -41,9 +41,9 @@ defmodule LifttribeWeb.AuthControllerTest do
     assert get_flash(conn, :error)
   end
 
-  test "GET /auth/login", %{conn: conn} do
-    conn = get(conn, "/auth/login")
-    assert html_response(conn, 200) =~ "Login"
+  test "GET /login", %{conn: conn} do
+    conn = get(conn, "/login")
+    assert html_response(conn, 200) =~ "Sign in to your account"
   end
 
   test "POST /auth/send_auth_code with existing email", %{conn: conn} do
